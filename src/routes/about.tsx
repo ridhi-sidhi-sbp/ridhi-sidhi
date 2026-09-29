@@ -68,7 +68,10 @@ const timeline = [
 
 const highlights = [
   ["Three floors", "Menswear, womenswear and kids, each with its own fitting suite."],
-  ["In-house alterations", "Hem, taper and let-out finished within 48 hours, free on first purchase."],
+  [
+    "In-house alterations",
+    "Hem, taper and let-out finished within 48 hours, free on first purchase.",
+  ],
   ["Appointment fittings", "Reserved slots for wedding parties and bulk family shopping."],
   ["Fabric-first buying", "We buy by hand-feel and weight, never by catalogue photograph."],
 ];
@@ -259,11 +262,7 @@ function About() {
       {/* Timeline */}
       <section className="bg-background">
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-          <SectionHeading
-            eyebrow="Timeline"
-            title="How the showroom grew"
-            align="center"
-          />
+          <SectionHeading eyebrow="Timeline" title="How the showroom grew" align="center" />
           <div className="mx-auto mt-16 max-w-3xl">
             {timeline.map((t, i) => (
               <Reveal key={t.year} delay={i * 0.06}>

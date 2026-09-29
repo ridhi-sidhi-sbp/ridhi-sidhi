@@ -55,7 +55,9 @@ export function Header() {
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
               className={`link-underline text-[0.6875rem] tracking-[0.24em] uppercase transition-colors ${
-                scrolled ? "text-foreground/70 hover:text-foreground" : "text-bone/80 hover:text-bone"
+                scrolled
+                  ? "text-foreground/70 hover:text-foreground"
+                  : "text-bone/80 hover:text-bone"
               }`}
               activeProps={{
                 className: scrolled ? "text-foreground" : "text-bone",

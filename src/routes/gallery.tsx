@@ -44,8 +44,16 @@ export const Route = createFileRoute("/gallery")({
 type Shot = { src: string; alt: string; group: string };
 
 const shots: Shot[] = [
-  { src: heroShowroom, alt: "Main showroom floor with tailored menswear displays", group: "Store Interior" },
-  { src: storeDetail, alt: "Folded shirting on illuminated timber shelving", group: "Store Interior" },
+  {
+    src: heroShowroom,
+    alt: "Main showroom floor with tailored menswear displays",
+    group: "Store Interior",
+  },
+  {
+    src: storeDetail,
+    alt: "Folded shirting on illuminated timber shelving",
+    group: "Store Interior",
+  },
   { src: galleryDenim, alt: "The denim wall, arranged by wash and fit", group: "Store Interior" },
   { src: storeExterior, alt: "The showroom facade at dusk", group: "Store Exterior" },
   { src: catWedding, alt: "Wedding collection styled on the mezzanine", group: "Product Showcase" },
@@ -53,12 +61,22 @@ const shots: Shot[] = [
   { src: catWomen, alt: "Occasion wear from the womenswear floor", group: "Product Showcase" },
   { src: accessories, alt: "Leather wallets, belts and cufflinks", group: "Product Showcase" },
   { src: catFormal, alt: "Formal shirting and trousers display", group: "Product Showcase" },
-  { src: storeExperience, alt: "A stylist adjusting a jacket at the fitting mirror", group: "Customer Experience" },
+  {
+    src: storeExperience,
+    alt: "A stylist adjusting a jacket at the fitting mirror",
+    group: "Customer Experience",
+  },
   { src: galleryFamily, alt: "A family choosing knitwear together", group: "Customer Experience" },
   { src: catKids, alt: "Kids wear styling on the ground floor", group: "Customer Experience" },
 ];
 
-const groups = ["All", "Store Interior", "Store Exterior", "Product Showcase", "Customer Experience"];
+const groups = [
+  "All",
+  "Store Interior",
+  "Store Exterior",
+  "Product Showcase",
+  "Customer Experience",
+];
 
 function Gallery() {
   const [filter, setFilter] = useState("All");
@@ -101,11 +119,7 @@ function Gallery() {
 
       <section className="bg-background">
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-          <SectionHeading
-            eyebrow="Browse"
-            title="Look around before you walk in"
-            align="center"
-          />
+          <SectionHeading eyebrow="Browse" title="Look around before you walk in" align="center" />
 
           <Reveal delay={0.1}>
             <div className="mt-12 flex flex-wrap justify-center gap-3">
@@ -137,7 +151,12 @@ function Gallery() {
                   onClick={() => setIndex(i)}
                   className="group relative block w-full cursor-zoom-in overflow-hidden media-zoom"
                 >
-                  <img src={shot.src} alt={shot.alt} loading="lazy" className="w-full object-cover" />
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    className="w-full object-cover"
+                  />
                   <span className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/25" />
                   <span className="absolute bottom-0 left-0 p-5 text-left text-[0.625rem] tracking-[0.24em] text-bone uppercase opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     {shot.group}

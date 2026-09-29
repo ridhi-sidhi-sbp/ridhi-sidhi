@@ -12,8 +12,8 @@ export function WhatsAppCta() {
             Message us before you visit and we'll keep your sizes ready.
           </h2>
           <p className="mt-6 text-base leading-relaxed text-bone/65">
-            Share the occasion — an interview, a sangeet, a first day at college — and our floor team
-            will pull a rail together for your arrival.
+            Share the occasion — an interview, a sangeet, a first day at college — and our floor
+            team will pull a rail together for your arrival.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

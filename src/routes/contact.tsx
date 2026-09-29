@@ -32,7 +32,11 @@ export const Route = createFileRoute("/contact")({
 
 const details = [
   { icon: MapPin, label: "Showroom", lines: [site.address.line1, site.address.line2] },
-  { icon: Clock, label: "Store Hours", lines: [site.hours, "Extended hours during festive season"] },
+  {
+    icon: Clock,
+    label: "Store Hours",
+    lines: [site.hours, "Extended hours during festive season"],
+  },
   { icon: Phone, label: "Phone", lines: [site.phone] },
   { icon: Mail, label: "Email", lines: [site.email] },
 ];
