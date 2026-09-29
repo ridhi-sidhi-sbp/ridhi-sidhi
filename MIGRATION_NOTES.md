@@ -14,6 +14,10 @@ Environment: Windows, PowerShell, Node v24.18.0, npm 11.16.0, Vite 8.1.5, Nitro 
 | `build: pin nitro preset to vercel` | `nitro: { preset: "vercel" }` in `vite.config.ts`; `.vercel` added to `.gitignore`. |
 | `chore: remove bun config` | `bunfig.toml` deleted. |
 | `chore: rename package, pin Node 24.x, add typecheck script, rewrite README` | Package renamed `tanstack_start_ts` -> `ridhi-sidhi`; `engines.node` = `24.x`; `.nvmrc` = `24`; `typecheck` script; README rewritten. |
+| `docs: add migration notes` | This file. |
+| `chore: enforce LF line endings` | `.gitattributes` with `* text=auto eol=lf`. |
+| `chore: ignore build output in eslint` | `eslint.config.js` ignores are now `dist`, `.output`, `.vercel`, `.wrangler`, `.vinxi`. No other config change. |
+| `style: fix prettier errors` | Ran `eslint --fix` on the 5 files with genuine Prettier errors (line wrapping and trailing commas only, +44/-20). |
 
 ## What broke and how it was fixed
 
@@ -39,9 +43,21 @@ Fix: the four root files were moved into `src/` and `src/router.tsx` was added (
     imported from node_modules/@tanstack/start-plugin-core/dist/esm/vite/preview-server-plugin/plugin.js
   ```
   TanStack's preview plugin expects `dist/server/`, while Nitro writes to `.output/` (Cloudflare) or `.vercel/output/` (Vercel). Not investigated further or worked around. Use `npm run dev` for local checks and a Vercel preview deployment for production-like checks.
-- **`npm run lint` fails (report only, nothing fixed).** 6,630 errors, all `prettier/prettier`, plus 6 `react-refresh/only-export-components` warnings across 71 linted files. 6,618 of the errors are line-ending only (`Delete ␍`): Git has `core.autocrlf=true` on this Windows machine, so the working tree is CRLF while the committed content is LF (`i/lf w/crlf`) and Prettier expects LF. The rest (about 12) are genuine formatting differences. On Vercel (Linux) the CR errors will not occur. Options for later: a `.gitattributes` with `* text=auto eol=lf`, or Prettier `endOfLine: "auto"`.
-- **ESLint does not ignore `.vercel`.** `eslint.config.js` ignores `dist`, `.output` and `.vinxi` only, so with a local build present `npm run lint` lints the bundled build output and effectively hangs. The lint results above were produced with `--ignore-pattern .vercel --ignore-pattern .wrangler`. Adding `.vercel` to the ignores is pending.
+- **`npm run lint`: 0 errors, 6 warnings.** The 6 `react-refresh/only-export-components` warnings are left as they are (all in shadcn `src/components/ui/`): `badge.tsx:32`, `button.tsx:49`, `form.tsx:163`, `navigation-menu.tsx:111`, `sidebar.tsx:743`, `toggle.tsx:42`.
 - **`npm run typecheck`: passes** (`tsc --noEmit`, exit 0, no errors).
+
+## Lint and line-ending fixes
+
+- **CRLF -> LF.** Earlier lint runs reported 6,630 `prettier/prettier` errors, 6,618 of them line-ending only (`Delete ␍`). Git has `core.autocrlf=true` on this Windows machine, so the working tree was CRLF while the committed content is LF and Prettier expects LF. `.gitattributes` (`* text=auto eol=lf`) was added, then the working tree was re-checked out (`git rm --cached -r . && git reset --hard`, clean tree first, `node_modules` untouched). `git status` was clean afterwards and the CR errors are gone.
+- **ESLint ignores.** `eslint.config.js` previously ignored only `dist`, `.output` and `.vinxi`, so with a local build present `npm run lint` linted the bundled `.vercel` output and effectively hung. It now also ignores `.vercel` and `.wrangler`, and plain `npm run lint` (no `--ignore-pattern` flags) finishes normally.
+- **Prettier.** The 12 genuine formatting errors were fixed with `eslint --fix` on `Header.tsx`, `WhatsAppCta.tsx`, `about.tsx`, `contact.tsx` and `gallery.tsx`. Formatting only, no wording or logic change.
+
+## Verification after these fixes
+
+- `npm run lint`: 0 errors, 6 warnings (above).
+- `npm run typecheck`: passes.
+- `npm run build`: passes and still prints `[nitro] Building [Nitro] (preset: vercel, ...)`.
+- `npm audit`: found 0 vulnerabilities (report only, nothing changed).
 
 ## Vercel preset decision
 
@@ -60,14 +76,13 @@ Vercel's docs (Supported Node.js versions, last updated 2026-02-27) list **24.x 
 - Vite prints a notice that `vite-tsconfig-paths` is detected and `resolve.tsconfigPaths: true` is now native. It comes from the Lovable config package; not acted on.
 - Syncing the lockfile after the package rename also dropped a few `"extraneous": true` entries (`ajv`, `fast-uri`, `json-schema-traverse` and similar), which were not real dependencies.
 - **Lost with `bunfig.toml`:** it carried a 24h supply-chain guard (`minimumReleaseAge = 86400`, with excludes for four `@lovable.dev/*` packages). No equivalent is configured for npm. Pending decision on whether to replace it.
-- A stale `.wrangler/` folder from the initial Cloudflare-preset build may exist locally; it is git-ignored.
+- The stale `.wrangler/` folder left by the initial Cloudflare-preset build was deleted. It was untracked, and `.wrangler` is now in the ESLint ignores.
 
 ## Still pending
 
 1. Decide the contact form backend.
 2. Add a favicon (`/favicon.ico` 404).
-3. Fix line endings (`.gitattributes` and/or Prettier `endOfLine`), then the remaining Prettier and `react-refresh` lint items.
-4. Add `.vercel` to the ESLint ignores.
-5. Decide on a replacement for Bun's 24h release-age guard.
-6. Dependency pruning, deprecated packages (`recharts`, `eslint`, `tsconfck`), content, images, styling, accessibility (all out of scope so far).
-7. Verify on a real Vercel preview deployment (the five routes and the favicon 404), since local `npm run preview` does not work.
+3. Decide whether to address the 6 `react-refresh/only-export-components` warnings in `src/components/ui/` (shadcn-generated; left as is).
+4. Decide on a replacement for Bun's 24h release-age guard.
+5. Dependency pruning, deprecated packages (`recharts`, `eslint`, `tsconfck`), content, images, styling, accessibility (all out of scope so far).
+6. Verify on a real Vercel preview deployment (the five routes and the favicon 404), since local `npm run preview` does not work.
