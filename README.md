@@ -1,29 +1,25 @@
-# Welcome to your Lovable project
+# Ridhi Sidhi
 
-This project was built with [Lovable](https://lovable.dev).
+Marketing site for the Ridhi Sidhi garment showroom. Built with TanStack Start, React, TypeScript and Tailwind CSS.
 
-## Build with Lovable
+## Requirements
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- **npm only.** Do not use Bun, pnpm or Yarn; `package-lock.json` is the single lockfile.
+- **Node.js 24.x** (see `.nvmrc` and `engines` in `package.json`).
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Commands
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install        # install dependencies
+npm run dev        # dev server at http://localhost:8080
+npm run build      # production build (Vercel Build Output API -> .vercel/output)
+npm run typecheck  # tsc --noEmit
+npm run lint       # eslint
+npm run format     # prettier --write
 ```
 
-## Built with
+`npm run preview` currently returns 500 locally; see `MIGRATION_NOTES.md`. Use `npm run dev` for local checks.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Deploying
+
+The Nitro preset is pinned to `vercel` in `vite.config.ts`, so `npm run build` writes the Vercel Build Output API format to `.vercel/output`.
