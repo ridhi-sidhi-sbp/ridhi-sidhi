@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Deploy target is Vercel (Build Output API -> .vercel/output). Pinned here so a
+  // failed platform auto-detect can't silently fall back to the Lovable Cloudflare default.
+  nitro: { preset: "vercel" },
 });
