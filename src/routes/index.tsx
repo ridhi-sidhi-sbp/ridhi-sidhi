@@ -11,9 +11,7 @@ import { site } from "@/lib/site";
 
 import heroShowroom from "@/assets/hero-showroom.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catWomen from "@/assets/cat-women.jpg";
 import catKids from "@/assets/cat-kids.jpg";
-import catWedding from "@/assets/cat-wedding.jpg";
 import catCasual from "@/assets/cat-casual.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 import storeExperience from "@/assets/store-experience.jpg";
@@ -29,13 +27,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A premium garment showroom with curated menswear, womenswear, kidswear, wedding and formal collections. Open 10 AM – 9 PM, every day.",
+          "A premium garment showroom with curated menswear, kidswear, casual and formal collections. Open 10 AM – 9 PM, every day.",
       },
       { property: "og:title", content: "Ridhi Sidhi — Fashion That Defines Your Presence" },
       {
         property: "og:description",
         content:
-          "Curated menswear, womenswear, kidswear and wedding collections in one premium showroom. Visit us in store.",
+          "Curated menswear, kidswear, casual and formal collections in one premium showroom. Visit us in store.",
       },
     ],
   }),
@@ -44,9 +42,7 @@ export const Route = createFileRoute("/")({
 
 const categories = [
   { name: "Men's Wear", note: "Tailoring, shirting & denim", image: catMen },
-  { name: "Women's Wear", note: "Occasion, fusion & everyday", image: catWomen },
   { name: "Kids Wear", note: "Ages 2 to 14", image: catKids },
-  { name: "Wedding Collection", note: "Sherwanis, lehengas & suits", image: catWedding },
   { name: "Casual Wear", note: "Knitwear, tees & weekend denim", image: catCasual },
   { name: "Formal Wear", note: "Workday shirting & trousers", image: catFormal },
 ];
@@ -65,7 +61,7 @@ const pillars = [
   {
     icon: Sparkles,
     title: "Latest Collections",
-    copy: "New arrivals land every fortnight, with a dedicated festive and wedding drop each season.",
+    copy: "New arrivals land every fortnight, with a dedicated festive drop each season.",
   },
   {
     icon: HeartHandshake,
@@ -80,12 +76,6 @@ const testimonials = [
       "I came in for one interview shirt and walked out with a whole capsule wardrobe. Nobody rushed me, nobody upsold me.",
     name: "Aarav Mehta",
     role: "Software Engineer",
-  },
-  {
-    quote:
-      "We dressed the entire wedding party here — groom, brothers, both sets of parents. The coordination was flawless.",
-    name: "Priya & Rohan Shah",
-    role: "Married December 2025",
   },
   {
     quote:
@@ -179,8 +169,8 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
           <SectionHeading
             eyebrow="The Floors"
-            title="Six worlds under one roof"
-            description="Walk the showroom from tailored formals to weekend denim, and from first-day-of-school uniforms to the sherwani you will be photographed in for the rest of your life."
+            title="Four worlds under one roof"
+            description="Walk the showroom from tailored formals to weekend denim, and from first-day-of-school uniforms to the everyday pieces you reach for most."
           />
 
           <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -256,7 +246,7 @@ function Home() {
                 {[
                   ["25+", "Years on the floor"],
                   ["48h", "In-house alterations"],
-                  ["14", "Curated categories"],
+                  ["11", "Curated categories"],
                 ].map(([value, label]) => (
                   <div key={label}>
                     <dt className="font-display text-4xl text-accent">{value}</dt>
@@ -326,7 +316,6 @@ function Home() {
               { src: galleryDenim, alt: "Denim wall in the showroom", h: 912, w: 1200 },
               { src: accessories, alt: "Wallets, belts and cufflinks", h: 1200, w: 1200 },
               { src: galleryFamily, alt: "A family browsing the racks", h: 1504, w: 1200 },
-              { src: catWedding, alt: "Wedding collection styling", h: 1408, w: 1024 },
               { src: storeExperience, alt: "Fitting room assistance", h: 1104, w: 1600 },
             ].map((img, i) => (
               <Reveal key={img.alt} delay={(i % 3) * 0.08} className="break-inside-avoid">

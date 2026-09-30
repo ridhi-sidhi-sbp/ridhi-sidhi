@@ -11,7 +11,6 @@ import storeExterior from "@/assets/store-exterior.jpg";
 import storeExperience from "@/assets/store-experience.jpg";
 import storeDetail from "@/assets/store-detail.jpg";
 import galleryFamily from "@/assets/gallery-family.jpg";
-import catWedding from "@/assets/cat-wedding.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -20,7 +19,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "The story of Ridhi Sidhi: a family-run premium garment showroom dressing students, professionals, families and wedding parties since 2000.",
+          "The story of Ridhi Sidhi: a family-run premium garment showroom dressing students, professionals and families since 2000.",
       },
       { property: "og:title", content: "About Ridhi Sidhi — Premium Garment Showroom Since 2000" },
       {
@@ -45,34 +44,24 @@ const timeline = [
     copy: "Menswear expands into trousers, denim and blazers. The in-house alteration room opens behind the fitting mirrors.",
   },
   {
-    year: "2013",
-    title: "Womenswear arrives",
-    copy: "A second floor is added for occasion, fusion and everyday womenswear, styled by a dedicated team.",
-  },
-  {
     year: "2018",
     title: "Kids & family",
     copy: "The ground floor is reworked so families can shop together, with a kids section built at a child's eye level.",
   },
   {
-    year: "2022",
-    title: "The wedding mezzanine",
-    copy: "An appointment-only floor for wedding parties, with palette coordination across the whole family.",
-  },
-  {
     year: "Today",
-    title: "Fourteen categories",
-    copy: "Three floors, a standing alteration promise of 48 hours, and customers who now bring their own children in.",
+    title: "Eleven categories",
+    copy: "Two floors, a standing alteration promise of 48 hours, and customers who now bring their own children in.",
   },
 ];
 
 const highlights = [
-  ["Three floors", "Menswear, womenswear and kids, each with its own fitting suite."],
+  ["Two floors", "Menswear and kids, each with its own fitting suite."],
   [
     "In-house alterations",
     "Hem, taper and let-out finished within 48 hours, free on first purchase.",
   ],
-  ["Appointment fittings", "Reserved slots for wedding parties and bulk family shopping."],
+  ["Appointment fittings", "Reserved slots for festive and bulk family shopping."],
   ["Fabric-first buying", "We buy by hand-feel and weight, never by catalogue photograph."],
 ];
 
@@ -159,15 +148,13 @@ function About() {
             <SectionHeading
               eyebrow="Every Generation"
               title="One floor for the whole family"
-              description="A college student picking a first blazer, a mother choosing a sangeet outfit, a nine-year-old insisting on the green jacket — they are all in the building on the same Saturday, and the floor is laid out so none of them has to wait outside."
+              description="A college student picking a first blazer, a father restocking his formal shirts, a nine-year-old insisting on the green jacket — they are all in the building on the same Saturday, and the floor is laid out so none of them has to wait outside."
             />
             <Reveal delay={0.15}>
               <ul className="mt-10 space-y-4">
                 {[
                   "Men · tailoring, shirting, denim and weekend wear",
-                  "Women · occasion, fusion and everyday edits",
                   "Kids · ages 2 to 14, sized for a growth spurt",
-                  "Wedding · coordinated across the whole party",
                 ].map((line) => (
                   <li key={line} className="flex gap-4 text-sm leading-relaxed">
                     <span className="mt-2.5 h-px w-6 shrink-0 bg-accent" />
@@ -192,7 +179,6 @@ function About() {
             {[
               ["25+", "Years on Ring Road"],
               ["40,000+", "Customers dressed"],
-              ["1,200+", "Wedding parties styled"],
               ["48h", "Alteration turnaround"],
             ].map(([value, label], i) => (
               <Reveal key={label} delay={i * 0.08}>
@@ -279,16 +265,6 @@ function About() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-bone">
-        <div className="mx-auto max-w-[1400px] px-6 py-20 lg:px-12">
-          <RevealImage
-            src={catWedding}
-            alt="Wedding collection styling on the mezzanine"
-            className="aspect-[21/9]"
-          />
         </div>
       </section>
 

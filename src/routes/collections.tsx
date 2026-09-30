@@ -8,9 +8,7 @@ import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
 import storeDetail from "@/assets/store-detail.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catWomen from "@/assets/cat-women.jpg";
 import catKids from "@/assets/cat-kids.jpg";
-import catWedding from "@/assets/cat-wedding.jpg";
 import catCasual from "@/assets/cat-casual.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 import galleryDenim from "@/assets/gallery-denim.jpg";
@@ -24,13 +22,13 @@ export const Route = createFileRoute("/collections")({
       {
         name: "description",
         content:
-          "Shirts, blazers, denim, formal and cargo trousers, inner wear, wallets, belts and the wedding collection — all on the Ridhi Sidhi showroom floor.",
+          "Shirts, blazers, denim, formal and cargo trousers, inner wear, wallets, belts and accessories — all on the Ridhi Sidhi showroom floor.",
       },
       { property: "og:title", content: "Collections — Ridhi Sidhi" },
       {
         property: "og:description",
         content:
-          "Fourteen curated categories across menswear, womenswear, kidswear and wedding, displayed across our showroom floors.",
+          "Curated categories across menswear, kidswear, casual and formal wear, displayed across our showroom floors.",
       },
     ],
   }),
@@ -93,11 +91,6 @@ const catalogue = [
     copy: "Ties, pocket squares, cufflinks, socks and travel-ready leather goods.",
     image: accessories,
   },
-  {
-    name: "Wedding Collection",
-    copy: "Sherwanis, indo-westerns, lehengas and three-piece suits with in-house fitting.",
-    image: catWedding,
-  },
 ];
 
 const showcases = [
@@ -110,13 +103,6 @@ const showcases = [
   },
   {
     eyebrow: "Showcase 02",
-    title: "The Wedding Edit",
-    copy: "Booked by appointment during season. Families come in as a group, we close the mezzanine for an hour, and coordinate palettes across the groom, the bride's side and both sets of parents.",
-    image: catWedding,
-    reverse: true,
-  },
-  {
-    eyebrow: "Showcase 03",
     title: "Everyday & Weekend",
     copy: "Denim, knitwear, track and cargo — the rails students and young professionals visit most. Restocked weekly, sized generously, and always displayed by fit rather than by label.",
     image: catCasual,
@@ -129,7 +115,7 @@ function Collections() {
     <PageShell>
       <PageHero
         eyebrow="Collections"
-        title="Fourteen categories, curated by hand"
+        title="Eleven categories, curated by hand"
         description="No carts, no checkout. Just an honest look at what is on the floor this season — come in and try what catches your eye."
         image={storeExperience}
         alt="Interior rails of the Ridhi Sidhi showroom"

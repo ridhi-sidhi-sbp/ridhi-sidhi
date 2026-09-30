@@ -16,8 +16,6 @@ import galleryDenim from "@/assets/gallery-denim.jpg";
 import galleryFamily from "@/assets/gallery-family.jpg";
 import accessories from "@/assets/accessories.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catWomen from "@/assets/cat-women.jpg";
-import catWedding from "@/assets/cat-wedding.jpg";
 import catKids from "@/assets/cat-kids.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 
@@ -56,9 +54,7 @@ const shots: Shot[] = [
   },
   { src: galleryDenim, alt: "The denim wall, arranged by wash and fit", group: "Store Interior" },
   { src: storeExterior, alt: "The showroom facade at dusk", group: "Store Exterior" },
-  { src: catWedding, alt: "Wedding collection styled on the mezzanine", group: "Product Showcase" },
   { src: catMen, alt: "Charcoal blazer from the tailoring room", group: "Product Showcase" },
-  { src: catWomen, alt: "Occasion wear from the womenswear floor", group: "Product Showcase" },
   { src: accessories, alt: "Leather wallets, belts and cufflinks", group: "Product Showcase" },
   { src: catFormal, alt: "Formal shirting and trousers display", group: "Product Showcase" },
   {

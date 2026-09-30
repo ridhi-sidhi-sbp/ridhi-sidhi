@@ -57,7 +57,7 @@ function Contact() {
       <PageHero
         eyebrow="Contact"
         title="Come in, or start the conversation here"
-        description="Open every day from 10 AM to 9 PM. Call ahead for a wedding appointment and we'll reserve the mezzanine."
+        description="Open every day from 10 AM to 9 PM. Call ahead for a bulk or family appointment and we'll set aside extra time for your fitting."
         image={storeExterior}
         alt="The Ridhi Sidhi storefront at dusk"
       />
@@ -193,7 +193,7 @@ function Contact() {
                         <input
                           id="occasion"
                           name="occasion"
-                          placeholder="Wedding, interview, festive, everyday…"
+                          placeholder="Interview, festive, everyday…"
                           className={fieldClass}
                         />
                       </div>
