@@ -6,13 +6,20 @@ import { Reveal, RevealImage } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
-import storeDetail from "@/assets/store-detail.jpg";
-import catMen from "@/assets/cat-men.jpg";
-import catCasual from "@/assets/cat-casual.jpg";
-import catFormal from "@/assets/cat-formal.jpg";
-import galleryDenim from "@/assets/gallery-denim.jpg";
-import accessories from "@/assets/accessories.jpg";
-import storeExperience from "@/assets/store-experience.jpg";
+import heroStore from "@/assets/photos/full/store/store-02.webp";
+import imgShirts from "@/assets/photos/card/shirts/shirts-04.webp";
+import imgTshirts from "@/assets/photos/card/tshirts/tshirts-09.webp";
+import imgBlazers from "@/assets/photos/card/blazers/blazers-14.webp";
+import imgJeans from "@/assets/photos/card/jeans/jeans-06.webp";
+import imgFormalPants from "@/assets/photos/card/formal-pants/formal-pants-18.webp";
+import imgCargoPants from "@/assets/photos/card/cargo-pants/cargo-pants-03.webp";
+import imgHalfPants from "@/assets/photos/card/half-pants/half-pants-03.webp";
+import imgTrackPants from "@/assets/photos/card/track-pants/track-pants-03.webp";
+import imgInnerWear from "@/assets/photos/card/inner-wear/inner-wear-04.webp";
+import imgWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-05.webp";
+import imgAccessories from "@/assets/photos/card/accessories/accessories-08.webp";
+import showcaseBlazerRoom from "@/assets/photos/card/store/store-04.webp";
+import showcaseDenim from "@/assets/photos/card/jeans/jeans-01.webp";
 
 export const Route = createFileRoute("/collections")({
   head: () => ({
@@ -38,57 +45,79 @@ const catalogue = [
   {
     name: "Shirts",
     copy: "Egyptian cotton, linen blends and easy-iron twills in classic and slim fits.",
-    image: catFormal,
+    image: imgShirts,
+    w: 900,
+    h: 600,
   },
   {
     name: "T-Shirts",
     copy: "Combed cotton crews, polos and long-sleeve knits in seasonal tones.",
-    image: catCasual,
+    image: imgTshirts,
+    w: 900,
+    h: 600,
   },
   {
     name: "Blazers",
     copy: "Half-canvas tailoring in wool, wool-blend and unstructured summer weights.",
-    image: catMen,
+    image: imgBlazers,
+    w: 646,
+    h: 900,
   },
   {
     name: "Jeans",
     copy: "Straight, slim and relaxed denim from raw indigo to stone-washed light.",
-    image: galleryDenim,
+    image: imgJeans,
+    w: 600,
+    h: 900,
   },
   {
     name: "Formal Pants",
     copy: "Flat-front and single-pleat trousers with crease-hold finishing.",
-    image: catFormal,
+    image: imgFormalPants,
+    w: 600,
+    h: 900,
   },
   {
     name: "Cargo Pants",
     copy: "Utility pockets, tapered legs and washed cotton for everyday wear.",
-    image: catCasual,
+    image: imgCargoPants,
+    w: 900,
+    h: 600,
   },
   {
     name: "Half Pants",
-    copy: "Chino shorts, denim shorts and drawstring styles for warm months.",
-    image: catCasual,
+    copy: "Chino shorts, printed shorts and drawstring styles for warm months.",
+    image: imgHalfPants,
+    w: 600,
+    h: 900,
   },
   {
     name: "Track Pants",
     copy: "French terry and performance knits with clean, unbranded lines.",
-    image: catCasual,
+    image: imgTrackPants,
+    w: 600,
+    h: 900,
   },
   {
     name: "Inner Wear",
     copy: "Breathable cotton vests, briefs, trunks and thermal layers.",
-    image: storeDetail,
+    image: imgInnerWear,
+    w: 900,
+    h: 600,
   },
   {
     name: "Wallets & Belts",
     copy: "Full-grain leather in tan, oxblood and black with brushed hardware.",
-    image: accessories,
+    image: imgWalletsBelts,
+    w: 900,
+    h: 704,
   },
   {
     name: "Accessories",
-    copy: "Ties, pocket squares, cufflinks, socks and travel-ready leather goods.",
-    image: accessories,
+    copy: "Handkerchief sets, socks, ties and travel-ready leather goods.",
+    image: imgAccessories,
+    w: 600,
+    h: 900,
   },
 ];
 
@@ -96,15 +125,15 @@ const showcases = [
   {
     eyebrow: "Showcase 01",
     title: "The Tailoring Room",
-    copy: "A dedicated corner for blazers, three-piece suits and formal shirting, with a master tailor on the floor from noon. Measurements are taken standing, seated and mid-stride — the way you will actually wear the garment.",
-    image: catMen,
+    copy: "A dedicated corner for blazers, three-piece suits and formal shirting. Measurements are taken standing, seated and mid-stride — the way you will actually wear the garment.",
+    image: showcaseBlazerRoom,
     reverse: false,
   },
   {
     eyebrow: "Showcase 02",
     title: "Everyday & Weekend",
     copy: "Denim, knitwear, track and cargo — the rails students and young professionals visit most. Restocked weekly, sized generously, and always displayed by fit rather than by label.",
-    image: catCasual,
+    image: showcaseDenim,
     reverse: false,
   },
 ];
@@ -116,8 +145,10 @@ function Collections() {
         eyebrow="Collections"
         title="Eleven categories, curated by hand"
         description="No carts, no checkout. Just an honest look at what is on the floor this season — come in and try what catches your eye."
-        image={storeExperience}
+        image={heroStore}
         alt="Interior rails of the Ridhi Sidhi showroom"
+        width={1600}
+        height={1067}
       />
 
       <section className="bg-background">
@@ -135,6 +166,8 @@ function Collections() {
                   <img
                     src={item.image}
                     alt={item.name}
+                    width={item.w}
+                    height={item.h}
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
@@ -159,6 +192,8 @@ function Collections() {
               src={s.image}
               alt={s.title}
               className={`aspect-[4/5] ${s.reverse ? "lg:order-2" : ""}`}
+              width={900}
+              height={600}
             />
             <div>
               <SectionHeading eyebrow={s.eyebrow} title={s.title} description={s.copy} />

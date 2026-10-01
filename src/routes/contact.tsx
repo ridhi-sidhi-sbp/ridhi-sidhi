@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { StoreMap } from "@/components/site/StoreMap";
 import { site } from "@/lib/site";
 
-import storeExterior from "@/assets/store-exterior.jpg";
+import storefrontImg from "@/assets/photos/full/storefront/storefront-02.webp";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -58,8 +58,10 @@ function Contact() {
         eyebrow="Contact"
         title="Come in, or start the conversation here"
         description="Open every day from 10 AM to 9 PM. Call ahead for a bulk or family appointment and we'll set aside extra time for your fitting."
-        image={storeExterior}
-        alt="The Ridhi Sidhi storefront at dusk"
+        image={storefrontImg}
+        alt="The Ridhi Sidhi storefront"
+        width={1600}
+        height={1067}
       />
 
       <section className="bg-background">

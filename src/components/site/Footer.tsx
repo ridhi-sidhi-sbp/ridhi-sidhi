@@ -10,8 +10,7 @@ export function Footer() {
             <p className="font-display text-2xl tracking-[0.22em] uppercase">{site.name}</p>
             <span className="rule-gold mt-5" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-bone/60">
-              A premium garment showroom dressing families, professionals and celebrations since{" "}
-              {site.established}.
+              A premium garment showroom dressing families, professionals and celebrations.
             </p>
           </div>
 

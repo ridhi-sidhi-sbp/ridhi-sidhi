@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -8,15 +8,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
-import heroShowroom from "@/assets/hero-showroom.jpg";
-import storeExterior from "@/assets/store-exterior.jpg";
-import storeExperience from "@/assets/store-experience.jpg";
-import storeDetail from "@/assets/store-detail.jpg";
-import galleryDenim from "@/assets/gallery-denim.jpg";
-import galleryFamily from "@/assets/gallery-family.jpg";
-import accessories from "@/assets/accessories.jpg";
-import catMen from "@/assets/cat-men.jpg";
-import catFormal from "@/assets/cat-formal.jpg";
+import heroStorefront from "@/assets/photos/full/storefront/storefront-01.webp";
+import dimensions from "@/assets/photos/dimensions.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -25,58 +18,100 @@ export const Route = createFileRoute("/gallery")({
       {
         name: "description",
         content:
-          "Store interiors, the evening storefront, product displays and customer moments from the Ridhi Sidhi premium garment showroom.",
+          "Store interiors, the storefront, every product category and customer moments from the Ridhi Sidhi premium garment showroom — the full photo gallery.",
       },
       { property: "og:title", content: "Gallery — Inside the Ridhi Sidhi Showroom" },
       {
         property: "og:description",
         content:
-          "A visual walk through our floors: interiors, exteriors, product displays and customer experience.",
+          "A visual walk through our floor: interiors, storefront, every category and customer experience.",
       },
     ],
   }),
   component: Gallery,
 });
 
-type Shot = { src: string; alt: string; group: string };
+const CATEGORY_LABELS: Record<string, string> = {
+  shirts: "Shirts",
+  tshirts: "T-Shirts",
+  blazers: "Blazers",
+  jeans: "Jeans",
+  "formal-pants": "Formal Pants",
+  "cargo-pants": "Cargo Pants",
+  "half-pants": "Half Pants",
+  "track-pants": "Track Pants",
+  "inner-wear": "Inner Wear",
+  "wallets-belts": "Wallets & Belts",
+  accessories: "Accessories",
+  store: "In Store",
+  storefront: "Storefront",
+  customers: "Customers",
+  owner: "Owner",
+};
 
-const shots: Shot[] = [
-  {
-    src: heroShowroom,
-    alt: "Main showroom floor with tailored menswear displays",
-    group: "Store Interior",
-  },
-  {
-    src: storeDetail,
-    alt: "Folded shirting on illuminated timber shelving",
-    group: "Store Interior",
-  },
-  { src: galleryDenim, alt: "The denim wall, arranged by wash and fit", group: "Store Interior" },
-  { src: storeExterior, alt: "The showroom facade at dusk", group: "Store Exterior" },
-  { src: catMen, alt: "Charcoal blazer from the tailoring room", group: "Product Showcase" },
-  { src: accessories, alt: "Leather wallets, belts and cufflinks", group: "Product Showcase" },
-  { src: catFormal, alt: "Formal shirting and trousers display", group: "Product Showcase" },
-  {
-    src: storeExperience,
-    alt: "A stylist adjusting a jacket at the fitting mirror",
-    group: "Customer Experience",
-  },
-  { src: galleryFamily, alt: "A family choosing knitwear together", group: "Customer Experience" },
-];
+const CATEGORY_ORDER = Object.keys(CATEGORY_LABELS);
+const DIMENSIONS = dimensions as Record<string, number[]>;
 
-const groups = [
-  "All",
-  "Store Interior",
-  "Store Exterior",
-  "Product Showcase",
-  "Customer Experience",
-];
+const thumbModules = import.meta.glob<string>("@/assets/photos/thumb/**/*.webp", {
+  eager: true,
+  import: "default",
+});
+const fullModules = import.meta.glob<string>("@/assets/photos/full/**/*.webp", {
+  import: "default",
+});
+
+type Shot = {
+  id: string;
+  thumb: string;
+  fullPath: string;
+  category: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+function slugFromPath(path: string): string {
+  const parts = path.split("/");
+  return parts[parts.length - 2] ?? "store";
+}
+
+const shots: Shot[] = Object.entries(thumbModules)
+  .map(([path, thumb]) => {
+    const category = slugFromPath(path);
+    const fileName = path.split("/").pop() ?? "";
+    const fullPath = path.replace("/thumb/", "/full/");
+    const label = CATEGORY_LABELS[category] ?? category;
+    const dims = DIMENSIONS[path];
+    const width = dims?.[0] ?? 500;
+    const height = dims?.[1] ?? 333;
+    return {
+      id: fileName,
+      thumb,
+      fullPath,
+      category,
+      alt: `${label} — ${fileName.replace(".webp", "")}`,
+      width,
+      height,
+    };
+  })
+  .sort((a, b) => {
+    const ai = CATEGORY_ORDER.indexOf(a.category);
+    const bi = CATEGORY_ORDER.indexOf(b.category);
+    if (ai !== bi) return ai - bi;
+    return a.id.localeCompare(b.id, undefined, { numeric: true });
+  });
+
+const groups = ["All", ...CATEGORY_ORDER.map((c) => CATEGORY_LABELS[c] ?? c)];
 
 function Gallery() {
   const [filter, setFilter] = useState("All");
   const [index, setIndex] = useState<number | null>(null);
+  const [fullSrc, setFullSrc] = useState<string | null>(null);
 
-  const visible = filter === "All" ? shots : shots.filter((s) => s.group === filter);
+  const visible = useMemo(
+    () => (filter === "All" ? shots : shots.filter((s) => CATEGORY_LABELS[s.category] === filter)),
+    [filter],
+  );
   const active = index === null ? undefined : visible[index];
 
   const close = useCallback(() => setIndex(null), []);
@@ -85,6 +120,25 @@ function Gallery() {
       setIndex((cur) => (cur === null ? cur : (cur + dir + visible.length) % visible.length)),
     [visible.length],
   );
+
+  useEffect(() => {
+    if (!active) {
+      setFullSrc(null);
+      return;
+    }
+    let cancelled = false;
+    const loader = fullModules[active.fullPath];
+    if (!loader) {
+      setFullSrc(active.thumb);
+      return;
+    }
+    loader().then((src) => {
+      if (!cancelled) setFullSrc(src);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [active]);
 
   useEffect(() => {
     if (index === null) return;
@@ -106,9 +160,11 @@ function Gallery() {
       <PageHero
         eyebrow="Gallery"
         title="The floor, frame by frame"
-        description="Interiors, the evening storefront, product displays and the quiet moments between a fitting and a decision."
-        image={storeExterior}
-        alt="The Ridhi Sidhi storefront at dusk"
+        description="Every category, the storefront, the interiors and the customer moments — the full photo archive."
+        image={heroStorefront}
+        alt="The Ridhi Sidhi storefront"
+        width={1600}
+        height={1067}
       />
 
       <section className="bg-background">
@@ -139,21 +195,27 @@ function Gallery() {
 
           <div className="mt-16 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
             {visible.map((shot, i) => (
-              <Reveal key={shot.alt} delay={(i % 3) * 0.06} className="break-inside-avoid">
+              <Reveal
+                key={shot.category + shot.id}
+                delay={(i % 9) * 0.02}
+                className="break-inside-avoid"
+              >
                 <button
                   type="button"
                   onClick={() => setIndex(i)}
                   className="group relative block w-full cursor-zoom-in overflow-hidden media-zoom"
                 >
                   <img
-                    src={shot.src}
+                    src={shot.thumb}
                     alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
                     loading="lazy"
                     className="w-full object-cover"
                   />
                   <span className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/25" />
                   <span className="absolute bottom-0 left-0 p-5 text-left text-[0.625rem] tracking-[0.24em] text-bone uppercase opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    {shot.group}
+                    {CATEGORY_LABELS[shot.category] ?? shot.category}
                   </span>
                 </button>
               </Reveal>
@@ -204,7 +266,7 @@ function Gallery() {
             </button>
 
             <motion.figure
-              key={active.alt}
+              key={active.category + active.id}
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -212,12 +274,13 @@ function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={active.src}
+                src={fullSrc ?? active.thumb}
                 alt={active.alt}
                 className="max-h-[78vh] w-full object-contain"
               />
               <figcaption className="mt-5 text-center text-[0.6875rem] tracking-[0.2em] text-bone/55 uppercase">
-                {active.group} — {index + 1} / {visible.length}
+                {CATEGORY_LABELS[active.category] ?? active.category} — {index + 1} /{" "}
+                {visible.length}
               </figcaption>
             </motion.figure>
           </motion.div>

@@ -44,7 +44,7 @@ export function Header() {
               scrolled || open ? "text-muted-foreground" : "text-bone/60"
             }`}
           >
-            Since {site.established}
+            {site.tagline}
           </span>
         </Link>
 

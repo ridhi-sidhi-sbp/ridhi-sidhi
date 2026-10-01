@@ -1,7 +1,6 @@
 export const site = {
   name: "Ridhi Sidhi",
   tagline: "Premium Garment Showroom",
-  established: 2000,
   phone: "+91 98250 41200",
   phoneHref: "tel:+919825041200",
   whatsapp: "919825041200",

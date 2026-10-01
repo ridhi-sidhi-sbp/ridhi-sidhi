@@ -6,52 +6,37 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 import { site } from "@/lib/site";
 
-import heroShowroom from "@/assets/hero-showroom.jpg";
-import storeExterior from "@/assets/store-exterior.jpg";
-import storeExperience from "@/assets/store-experience.jpg";
-import storeDetail from "@/assets/store-detail.jpg";
-import galleryFamily from "@/assets/gallery-family.jpg";
+import heroStore from "@/assets/photos/full/store/store-08.webp";
+import journeyStorefront from "@/assets/photos/card/storefront/storefront-06.webp";
+import floorCustomers from "@/assets/photos/card/customers/customers-01.webp";
+import highlightsStore from "@/assets/photos/card/store/store-05.webp";
+import ownerPortrait from "@/assets/photos/card/owner/owner-04.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Ridhi Sidhi, A Family Garment Showroom Since 2000" },
+      { title: "About — Ridhi Sidhi, A Family Garment Showroom" },
       {
         name: "description",
         content:
-          "The story of Ridhi Sidhi: a family-run premium garment showroom dressing students, professionals and families since 2000.",
+          "The story of Ridhi Sidhi: a family-run premium garment showroom dressing students, professionals and families.",
       },
-      { property: "og:title", content: "About Ridhi Sidhi — Premium Garment Showroom Since 2000" },
+      { property: "og:title", content: "About Ridhi Sidhi — Premium Garment Showroom" },
       {
         property: "og:description",
         content:
-          "Two generations, one floor, and a simple belief: clothing should fit the person, not the trend.",
+          "A family-run showroom and a simple belief: clothing should fit the person, not the trend.",
       },
     ],
   }),
   component: About,
 });
 
-const timeline = [
-  {
-    year: "2000",
-    title: "A single counter",
-    copy: "Ridhi Sidhi opens as a 400 sq ft shirting counter on Ring Road, stocked with twelve fabrics and one tailor.",
-  },
-  {
-    year: "2007",
-    title: "The first full floor",
-    copy: "Menswear expands into trousers, denim and blazers. The in-house alteration room opens behind the fitting mirrors.",
-  },
-  {
-    year: "Today",
-    title: "Eleven categories",
-    copy: "A standing alteration promise of 48 hours, and a floor stocked across shirting, denim, tailoring, trousers, innerwear and accessories.",
-  },
-];
-
 const highlights = [
-  ["In-store trial room", "A dedicated fitting suite, off the main floor, with a full-length mirror."],
+  [
+    "In-store trial room",
+    "A dedicated fitting suite, off the main floor, with a full-length mirror.",
+  ],
   [
     "In-house alterations",
     "Hem, taper and let-out finished within 48 hours, free on first purchase.",
@@ -65,32 +50,37 @@ function About() {
     <PageShell>
       <PageHero
         eyebrow="Our Story"
-        title="Twenty-five years of getting the fit right"
+        title="A family showroom, built on getting the fit right"
         description="Ridhi Sidhi has been a family business from the first day — and the floor still runs the way a family would run it."
-        image={heroShowroom}
-        alt="The Ridhi Sidhi showroom floor"
+        image={heroStore}
+        alt="Illuminated shelving inside the Ridhi Sidhi showroom"
+        width={1600}
+        height={1067}
       />
 
-      {/* Our journey */}
+      {/* Our approach */}
       <section className="bg-background">
         <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
           <div>
             <SectionHeading
-              eyebrow="Our Journey"
-              title="It began with twelve bolts of shirting"
-              description="In 2000, a small counter on Ring Road sold cloth by the metre. Customers kept asking who could stitch it — so we hired a tailor, then a second, then took the shop next door. Everything since has grown out of a question a customer asked first."
+              eyebrow="Our Approach"
+              title="Chosen by hand, not by catalogue"
+              description="We buy by feel — the weight of the cloth, the way it drapes, whether it holds its shape after a season of real wear. We have never carried a bargain bin, and we do not chase a trend for its own sake."
             />
             <Reveal delay={0.15}>
               <p className="mt-8 text-base leading-relaxed text-muted-foreground">
-                We have never carried a bargain bin, and we have never chased a trend for its own
-                sake. What stays on the floor is what holds its shape after a season of real wear.
+                What's on the rail today is what earns a second visit — checked by hand before it
+                reaches the floor, and backed by an in-house alteration team that gets the fit
+                right.
               </p>
             </Reveal>
           </div>
           <RevealImage
-            src={storeExterior}
-            alt="The showroom exterior in the evening"
+            src={journeyStorefront}
+            alt="The Ridhi Sidhi storefront"
             className="aspect-[4/5]"
+            width={900}
+            height={600}
           />
         </div>
       </section>
@@ -135,9 +125,11 @@ function About() {
       <section className="bg-bone">
         <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
           <RevealImage
-            src={galleryFamily}
+            src={floorCustomers}
             alt="A customer being helped at the service counter"
             className="aspect-[4/5]"
+            width={900}
+            height={600}
           />
           <div>
             <SectionHeading
@@ -174,8 +166,8 @@ function About() {
           />
           <div className="mt-16 grid gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["25+", "Years on Ring Road"],
-              ["40,000+", "Customers dressed"],
+              ["11", "Curated categories"],
+              ["4", "Brands stocked"],
               ["48h", "Alteration turnaround"],
             ].map(([value, label], i) => (
               <Reveal key={label} delay={i * 0.08}>
@@ -206,61 +198,39 @@ function About() {
             </div>
           </div>
           <RevealImage
-            src={storeDetail}
+            src={highlightsStore}
             alt="Shirting stacked on illuminated shelving"
             className="aspect-[4/5]"
+            width={900}
+            height={600}
           />
         </div>
       </section>
 
-      {/* Owner message */}
+      {/* Owner */}
       <section className="bg-ink">
         <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-5 lg:gap-20 lg:px-12 lg:py-32">
           <RevealImage
-            src={storeExperience}
-            alt="On the showroom floor with a customer"
+            src={ownerPortrait}
+            alt="The owner at the billing counter"
             className="aspect-[4/5] lg:col-span-2"
+            width={900}
+            height={600}
           />
           <div className="lg:col-span-3">
             <Reveal>
-              <span className="eyebrow">Owner's Message</span>
-              <blockquote className="mt-8 font-display text-2xl leading-relaxed text-bone/90 sm:text-3xl">
-                “My father measured his first customer standing in the doorway because the shop was
-                too narrow for a mirror. We have more space now, but the promise has not changed —
-                you leave wearing something that fits you, and you come back because of how you were
-                treated while you decided.”
-              </blockquote>
+              <span className="eyebrow">The Owner</span>
+              <p className="mt-8 font-display text-2xl leading-relaxed text-bone/90 sm:text-3xl">
+                Every fitting on this floor is signed off from this counter — the same place new
+                stock gets checked by hand before it goes on the rail.
+              </p>
               <div className="mt-10">
                 <span className="rule-gold" />
-                <p className="mt-5 text-sm text-bone">Mahesh Agarwal</p>
-                <p className="mt-1 text-[0.6875rem] tracking-[0.22em] text-bone/45 uppercase">
+                <p className="mt-5 text-[0.6875rem] tracking-[0.22em] text-bone/45 uppercase">
                   Proprietor, {site.name}
                 </p>
               </div>
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-          <SectionHeading eyebrow="Timeline" title="How the showroom grew" align="center" />
-          <div className="mx-auto mt-16 max-w-3xl">
-            {timeline.map((t, i) => (
-              <Reveal key={t.year} delay={i * 0.06}>
-                <div className="grid grid-cols-[auto_1fr] gap-8 border-l border-border pl-8 pb-12 last:pb-0 sm:grid-cols-[7rem_1fr]">
-                  <span className="relative font-display text-2xl text-accent">
-                    <span className="absolute top-3 -left-[2.3rem] size-2 rounded-full bg-accent" />
-                    {t.year}
-                  </span>
-                  <div>
-                    <h3 className="text-xl">{t.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.copy}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>

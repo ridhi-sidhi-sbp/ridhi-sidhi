@@ -26,18 +26,25 @@ export function PageHero({
   description,
   image,
   alt,
+  width,
+  height,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   image: string;
   alt: string;
+  width?: number;
+  height?: number;
 }) {
   return (
     <section className="relative flex h-[60vh] min-h-[420px] items-end overflow-hidden bg-ink">
       <motion.img
         src={image}
         alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
         initial={{ scale: 1.12 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}

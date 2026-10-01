@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Award, CalendarRange, Sparkles, HeartHandshake, ArrowRight } from "lucide-react";
+import { Award, Tag, Sparkles, HeartHandshake, ArrowRight } from "lucide-react";
 
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, RevealImage } from "@/components/site/Reveal";
@@ -9,15 +9,23 @@ import { StoreMap } from "@/components/site/StoreMap";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 import { site } from "@/lib/site";
 
-import heroShowroom from "@/assets/hero-showroom.jpg";
-import catMen from "@/assets/cat-men.jpg";
-import catCasual from "@/assets/cat-casual.jpg";
-import catFormal from "@/assets/cat-formal.jpg";
-import storeExperience from "@/assets/store-experience.jpg";
-import storeDetail from "@/assets/store-detail.jpg";
-import galleryDenim from "@/assets/gallery-denim.jpg";
-import galleryFamily from "@/assets/gallery-family.jpg";
-import accessories from "@/assets/accessories.jpg";
+import heroStore from "@/assets/photos/full/store/store-01.webp";
+import catShirts from "@/assets/photos/card/shirts/shirts-09.webp";
+import catTshirts from "@/assets/photos/card/tshirts/tshirts-10.webp";
+import catBlazers from "@/assets/photos/card/blazers/blazers-01.webp";
+import catJeans from "@/assets/photos/card/jeans/jeans-04.webp";
+import catFormalPants from "@/assets/photos/card/formal-pants/formal-pants-11.webp";
+import catWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-09.webp";
+import brandsWall from "@/assets/photos/card/store/store-07.webp";
+import experienceCustomers from "@/assets/photos/card/customers/customers-09.webp";
+import galleryStore from "@/assets/photos/card/store/store-06.webp";
+import galleryJeans from "@/assets/photos/card/jeans/jeans-02.webp";
+import galleryAccessories from "@/assets/photos/card/accessories/accessories-08.webp";
+import galleryCustomers from "@/assets/photos/card/customers/customers-13.webp";
+import galleryTrialRoom from "@/assets/photos/card/store/store-21.webp";
+import floorCustomer1 from "@/assets/photos/card/customers/customers-06.webp";
+import floorCustomer2 from "@/assets/photos/card/customers/customers-08.webp";
+import floorCustomer3 from "@/assets/photos/card/customers/customers-11.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,9 +48,30 @@ export const Route = createFileRoute("/")({
 });
 
 const categories = [
-  { name: "Men's Wear", note: "Tailoring, shirting & denim", image: catMen },
-  { name: "Casual Wear", note: "Knitwear, tees & weekend denim", image: catCasual },
-  { name: "Formal Wear", note: "Workday shirting & trousers", image: catFormal },
+  { name: "Shirts", note: "Cotton, linen & easy-iron twills", image: catShirts, w: 900, h: 600 },
+  { name: "T-Shirts", note: "Polos, crews & everyday knits", image: catTshirts, w: 900, h: 600 },
+  {
+    name: "Blazers",
+    note: "Half-canvas tailoring, ready to wear",
+    image: catBlazers,
+    w: 600,
+    h: 900,
+  },
+  { name: "Jeans", note: "Straight, slim & relaxed denim", image: catJeans, w: 600, h: 900 },
+  {
+    name: "Formal Pants",
+    note: "Flat-front trousers, crease-hold finish",
+    image: catFormalPants,
+    w: 600,
+    h: 900,
+  },
+  {
+    name: "Wallets & Belts",
+    note: "Full-grain leather essentials",
+    image: catWalletsBelts,
+    w: 900,
+    h: 873,
+  },
 ];
 
 const pillars = [
@@ -52,9 +81,9 @@ const pillars = [
     copy: "Every rail is hand-checked for fabric weight, stitch line and finish before it reaches the floor.",
   },
   {
-    icon: CalendarRange,
-    title: `Trusted Since ${site.established}`,
-    copy: "Two generations of the same family have dressed this city for its biggest days.",
+    icon: Tag,
+    title: "Multi-Brand Floor",
+    copy: "Peter England, Killer, Crimsoune Club and Jockey, stocked together under one roof.",
   },
   {
     icon: Sparkles,
@@ -68,13 +97,10 @@ const pillars = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "I came in for one interview shirt and walked out with a whole capsule wardrobe. Nobody rushed me, nobody upsold me.",
-    name: "Aarav Mehta",
-    role: "Software Engineer",
-  },
+const floorMoments = [
+  { src: floorCustomer1, alt: "A customer being shown fabric at the counter" },
+  { src: floorCustomer2, alt: "A customer trying on a jacket with staff assistance" },
+  { src: floorCustomer3, alt: "A customer at the fitting mirror with a staff member" },
 ];
 
 function Home() {
@@ -83,10 +109,11 @@ function Home() {
       {/* Hero */}
       <section className="relative flex min-h-screen items-center overflow-hidden bg-ink">
         <motion.img
-          src={heroShowroom}
-          alt="Interior of the Ridhi Sidhi premium garment showroom"
-          width={1920}
-          height={1200}
+          src={heroStore}
+          alt="Interior aisle of the Ridhi Sidhi showroom"
+          width={1600}
+          height={1067}
+          fetchPriority="high"
           initial={{ scale: 1.14 }}
           animate={{ scale: 1 }}
           transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
@@ -101,7 +128,7 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {site.tagline} · Since {site.established}
+            {site.tagline}
           </motion.span>
 
           <motion.h1
@@ -161,8 +188,8 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
           <SectionHeading
             eyebrow="The Floor"
-            title="Everything under one roof"
-            description="Walk the showroom from tailored formals to weekend denim, and the everyday pieces you reach for most."
+            title="Six categories, one visit"
+            description="Walk the showroom from tailored blazers to weekend denim — see the full catalogue of eleven categories on the Collections page."
           />
 
           <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -175,8 +202,8 @@ function Home() {
                   <img
                     src={cat.image}
                     alt={cat.name}
-                    width={1024}
-                    height={1408}
+                    width={cat.w}
+                    height={cat.h}
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
@@ -217,26 +244,58 @@ function Home() {
         </div>
       </section>
 
+      {/* Brands we stock */}
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
+          <div>
+            <SectionHeading
+              eyebrow="Brands We Stock"
+              title="A floor built around names you trust"
+              description="We're a multi-brand stockist, not a single label's showroom. Peter England, Killer, Crimsoune Club and Jockey all share the same rails."
+            />
+            <Reveal delay={0.15}>
+              <ul className="mt-10 grid grid-cols-2 gap-6">
+                {["Peter England", "Killer", "Crimsoune Club", "Jockey"].map((brand) => (
+                  <li
+                    key={brand}
+                    className="border-t border-border pt-4 text-sm tracking-[0.06em] text-foreground"
+                  >
+                    {brand}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+          <RevealImage
+            src={brandsWall}
+            alt="The Peter England brand wall inside the showroom"
+            className="aspect-[4/5]"
+            width={900}
+            height={600}
+          />
+        </div>
+      </section>
+
       {/* Store experience */}
       <section className="bg-background">
         <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
           <RevealImage
-            src={storeExperience}
-            alt="A stylist assisting a customer at the fitting mirror"
-            width={1600}
-            height={1104}
+            src={experienceCustomers}
+            alt="A staff member helping a customer choose a blazer"
+            width={900}
+            height={600}
             className="aspect-[4/5]"
           />
           <div>
             <SectionHeading
               eyebrow="Store Experience"
-              title="Three floors, one unhurried hour"
+              title="One visit, no rush"
               description="Our floor is designed the way a fitting should feel — wide aisles, warm light, full-length mirrors that tell the truth, and a stylist who waits while you decide."
             />
             <Reveal delay={0.15}>
               <dl className="mt-12 grid gap-8 sm:grid-cols-3">
                 {[
-                  ["25+", "Years on the floor"],
+                  ["4", "Brands stocked"],
                   ["48h", "In-house alterations"],
                   ["11", "Curated categories"],
                 ].map(([value, label]) => (
@@ -253,30 +312,28 @@ function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* On the floor */}
       <section className="bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
           <SectionHeading
-            eyebrow="In Their Words"
-            title="Customers who keep coming back"
+            eyebrow="On The Floor"
+            title="Real fittings, real moments"
             align="center"
             tone="light"
           />
           <div className="mt-16 grid gap-px bg-bone/10 lg:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 0.1}>
-                <figure className="flex h-full flex-col justify-between bg-ink p-10">
-                  <blockquote className="font-display text-xl leading-relaxed text-bone/90">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="mt-10">
-                    <span className="rule-gold" />
-                    <p className="mt-5 text-sm text-bone">{t.name}</p>
-                    <p className="mt-1 text-[0.6875rem] tracking-[0.2em] text-bone/45 uppercase">
-                      {t.role}
-                    </p>
-                  </figcaption>
-                </figure>
+            {floorMoments.map((img, i) => (
+              <Reveal key={img.alt} delay={i * 0.1}>
+                <div className="aspect-[4/5] media-zoom">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    width={900}
+                    height={600}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </Reveal>
             ))}
           </div>
@@ -304,11 +361,21 @@ function Home() {
 
           <div className="mt-16 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
             {[
-              { src: storeDetail, alt: "Folded shirts on illuminated shelving", h: 1504, w: 1200 },
-              { src: galleryDenim, alt: "Denim wall in the showroom", h: 912, w: 1200 },
-              { src: accessories, alt: "Wallets, belts and cufflinks", h: 1200, w: 1200 },
-              { src: galleryFamily, alt: "A family browsing the racks", h: 1504, w: 1200 },
-              { src: storeExperience, alt: "Fitting room assistance", h: 1104, w: 1600 },
+              { src: galleryStore, alt: "The Peter England brand wall", h: 600, w: 900 },
+              {
+                src: galleryJeans,
+                alt: "Denim folded and racked in the showroom",
+                h: 600,
+                w: 900,
+              },
+              {
+                src: galleryAccessories,
+                alt: "Sock and tie display at the counter",
+                h: 900,
+                w: 600,
+              },
+              { src: galleryCustomers, alt: "A customer at the fitting mirror", h: 600, w: 900 },
+              { src: galleryTrialRoom, alt: "The trial room entrance", h: 600, w: 900 },
             ].map((img, i) => (
               <Reveal key={img.alt} delay={(i % 3) * 0.08} className="break-inside-avoid">
                 <div className="media-zoom">
