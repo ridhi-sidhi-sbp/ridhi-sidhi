@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Ridhi Sidhi is a premium garment showroom offering curated menswear, kidswear, casual and formal collections. Visit our store.",
+          "Ridhi Sidhi is a premium garment showroom offering curated menswear, casual and formal collections. Visit our store.",
       },
       { name: "author", content: "Ridhi Sidhi" },
       { property: "og:site_name", content: "Ridhi Sidhi" },

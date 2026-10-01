@@ -11,7 +11,6 @@ import { site } from "@/lib/site";
 
 import heroShowroom from "@/assets/hero-showroom.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catKids from "@/assets/cat-kids.jpg";
 import catCasual from "@/assets/cat-casual.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 import storeExperience from "@/assets/store-experience.jpg";
@@ -27,13 +26,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A premium garment showroom with curated menswear, kidswear, casual and formal collections. Open 10 AM – 9 PM, every day.",
+          "A premium garment showroom with curated menswear, casual and formal collections. Open 10 AM – 9 PM, every day.",
       },
       { property: "og:title", content: "Ridhi Sidhi — Fashion That Defines Your Presence" },
       {
         property: "og:description",
         content:
-          "Curated menswear, kidswear, casual and formal collections in one premium showroom. Visit us in store.",
+          "Curated menswear, casual and formal collections in one premium showroom. Visit us in store.",
       },
     ],
   }),
@@ -42,7 +41,6 @@ export const Route = createFileRoute("/")({
 
 const categories = [
   { name: "Men's Wear", note: "Tailoring, shirting & denim", image: catMen },
-  { name: "Kids Wear", note: "Ages 2 to 14", image: catKids },
   { name: "Casual Wear", note: "Knitwear, tees & weekend denim", image: catCasual },
   { name: "Formal Wear", note: "Workday shirting & trousers", image: catFormal },
 ];
@@ -76,12 +74,6 @@ const testimonials = [
       "I came in for one interview shirt and walked out with a whole capsule wardrobe. Nobody rushed me, nobody upsold me.",
     name: "Aarav Mehta",
     role: "Software Engineer",
-  },
-  {
-    quote:
-      "The kids section is the only place my two actually enjoy shopping. Good fabrics that survive a school term.",
-    name: "Neha Desai",
-    role: "Parent of two",
   },
 ];
 
@@ -168,9 +160,9 @@ function Home() {
       <section className="bg-background">
         <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
           <SectionHeading
-            eyebrow="The Floors"
-            title="Four worlds under one roof"
-            description="Walk the showroom from tailored formals to weekend denim, and from first-day-of-school uniforms to the everyday pieces you reach for most."
+            eyebrow="The Floor"
+            title="Everything under one roof"
+            description="Walk the showroom from tailored formals to weekend denim, and the everyday pieces you reach for most."
           />
 
           <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">

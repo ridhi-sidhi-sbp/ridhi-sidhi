@@ -8,7 +8,6 @@ import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
 import storeDetail from "@/assets/store-detail.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catKids from "@/assets/cat-kids.jpg";
 import catCasual from "@/assets/cat-casual.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 import galleryDenim from "@/assets/gallery-denim.jpg";
@@ -28,7 +27,7 @@ export const Route = createFileRoute("/collections")({
       {
         property: "og:description",
         content:
-          "Curated categories across menswear, kidswear, casual and formal wear, displayed across our showroom floors.",
+          "Curated categories across menswear, casual and formal wear, displayed across our showroom floor.",
       },
     ],
   }),
@@ -69,7 +68,7 @@ const catalogue = [
   {
     name: "Half Pants",
     copy: "Chino shorts, denim shorts and drawstring styles for warm months.",
-    image: catKids,
+    image: catCasual,
   },
   {
     name: "Track Pants",

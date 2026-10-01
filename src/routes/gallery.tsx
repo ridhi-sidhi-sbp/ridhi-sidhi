@@ -16,7 +16,6 @@ import galleryDenim from "@/assets/gallery-denim.jpg";
 import galleryFamily from "@/assets/gallery-family.jpg";
 import accessories from "@/assets/accessories.jpg";
 import catMen from "@/assets/cat-men.jpg";
-import catKids from "@/assets/cat-kids.jpg";
 import catFormal from "@/assets/cat-formal.jpg";
 
 export const Route = createFileRoute("/gallery")({
@@ -63,7 +62,6 @@ const shots: Shot[] = [
     group: "Customer Experience",
   },
   { src: galleryFamily, alt: "A family choosing knitwear together", group: "Customer Experience" },
-  { src: catKids, alt: "Kids wear styling on the ground floor", group: "Customer Experience" },
 ];
 
 const groups = [

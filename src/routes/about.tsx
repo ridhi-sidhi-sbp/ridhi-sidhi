@@ -44,19 +44,14 @@ const timeline = [
     copy: "Menswear expands into trousers, denim and blazers. The in-house alteration room opens behind the fitting mirrors.",
   },
   {
-    year: "2018",
-    title: "Kids & family",
-    copy: "The ground floor is reworked so families can shop together, with a kids section built at a child's eye level.",
-  },
-  {
     year: "Today",
     title: "Eleven categories",
-    copy: "Two floors, a standing alteration promise of 48 hours, and customers who now bring their own children in.",
+    copy: "A standing alteration promise of 48 hours, and a floor stocked across shirting, denim, tailoring, trousers, innerwear and accessories.",
   },
 ];
 
 const highlights = [
-  ["Two floors", "Menswear and kids, each with its own fitting suite."],
+  ["In-store trial room", "A dedicated fitting suite, off the main floor, with a full-length mirror."],
   [
     "In-house alterations",
     "Hem, taper and let-out finished within 48 hours, free on first purchase.",
@@ -136,25 +131,27 @@ function About() {
         </div>
       </section>
 
-      {/* Fashion for every generation */}
+      {/* What's on the floor */}
       <section className="bg-bone">
         <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
           <RevealImage
             src={galleryFamily}
-            alt="A family shopping together in the showroom"
+            alt="A customer being helped at the service counter"
             className="aspect-[4/5]"
           />
           <div>
             <SectionHeading
-              eyebrow="Every Generation"
-              title="One floor for the whole family"
-              description="A college student picking a first blazer, a father restocking his formal shirts, a nine-year-old insisting on the green jacket — they are all in the building on the same Saturday, and the floor is laid out so none of them has to wait outside."
+              eyebrow="On The Floor"
+              title="Built around how men actually shop"
+              description="Every rail is grouped by fit and fabric rather than by season, so you can compare like with like — then take it straight to the trial room without waiting in line."
             />
             <Reveal delay={0.15}>
               <ul className="mt-10 space-y-4">
                 {[
-                  "Men · tailoring, shirting, denim and weekend wear",
-                  "Kids · ages 2 to 14, sized for a growth spurt",
+                  "Shirting & tees · everyday cotton to easy-iron formals",
+                  "Denim & tailoring · jeans, cargos and blazers side by side",
+                  "Trousers · formal, half and track, sized true",
+                  "Innerwear & accessories · wallets, belts and essentials at the counter",
                 ].map((line) => (
                   <li key={line} className="flex gap-4 text-sm leading-relaxed">
                     <span className="mt-2.5 h-px w-6 shrink-0 bg-accent" />
