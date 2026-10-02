@@ -11,19 +11,19 @@ import { site } from "@/lib/site";
 
 import heroStore from "@/assets/photos/full/store/store-01.webp";
 import catShirts from "@/assets/photos/card/shirts/shirts-09.webp";
-import catTshirts from "@/assets/photos/card/tshirts/tshirts-10.webp";
+import catTshirts from "@/assets/photos/card/tshirts/tshirts-01.webp";
 import catBlazers from "@/assets/photos/card/blazers/blazers-01.webp";
 import catJeans from "@/assets/photos/card/jeans/jeans-04.webp";
-import catFormalPants from "@/assets/photos/card/formal-pants/formal-pants-11.webp";
-import catWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-09.webp";
-import brandsWall from "@/assets/photos/card/store/store-07.webp";
-import experienceCustomers from "@/assets/photos/card/customers/customers-09.webp";
-import galleryStore from "@/assets/photos/card/store/store-06.webp";
+import catFormalPants from "@/assets/photos/card/formal-pants/formal-pants-01.webp";
+import catWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-01.webp";
+import brandsWall from "@/assets/photos/card/store/store-02.webp";
+import experienceCustomers from "@/assets/photos/card/customers/customers-02.webp";
+import galleryStore from "@/assets/photos/card/store/store-01.webp";
 import galleryJeans from "@/assets/photos/card/jeans/jeans-02.webp";
 import galleryAccessories from "@/assets/photos/card/accessories/accessories-08.webp";
 import galleryCustomers from "@/assets/photos/card/customers/customers-13.webp";
-import galleryTrialRoom from "@/assets/photos/card/store/store-21.webp";
-import floorCustomer1 from "@/assets/photos/card/customers/customers-06.webp";
+import galleryTrialRoom from "@/assets/photos/card/store/store-02.webp";
+import floorCustomer1 from "@/assets/photos/card/customers/customers-05.webp";
 import floorCustomer2 from "@/assets/photos/card/customers/customers-08.webp";
 import floorCustomer3 from "@/assets/photos/card/customers/customers-11.webp";
 
@@ -48,16 +48,16 @@ export const Route = createFileRoute("/")({
 });
 
 const categories = [
-  { name: "Shirts", note: "Cotton, linen & easy-iron twills", image: catShirts, w: 900, h: 600 },
+  { name: "Shirts", note: "Cotton, linen & easy-iron twills", image: catShirts, w: 900, h: 822 },
   { name: "T-Shirts", note: "Polos, crews & everyday knits", image: catTshirts, w: 900, h: 600 },
   {
     name: "Blazers",
     note: "Half-canvas tailoring, ready to wear",
     image: catBlazers,
-    w: 600,
-    h: 900,
+    w: 900,
+    h: 600,
   },
-  { name: "Jeans", note: "Straight, slim & relaxed denim", image: catJeans, w: 600, h: 900 },
+  { name: "Jeans", note: "Straight, slim & relaxed denim", image: catJeans, w: 900, h: 822 },
   {
     name: "Formal Pants",
     note: "Flat-front trousers, crease-hold finish",
@@ -70,7 +70,7 @@ const categories = [
     note: "Full-grain leather essentials",
     image: catWalletsBelts,
     w: 900,
-    h: 873,
+    h: 600,
   },
 ];
 
@@ -107,21 +107,24 @@ function Home() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-ink">
-        <motion.img
-          src={heroStore}
-          alt="Interior aisle of the Ridhi Sidhi showroom"
-          width={1600}
-          height={1067}
-          fetchPriority="high"
+      <section className="relative flex min-h-dvh flex-col overflow-hidden bg-ink pt-20 sm:min-h-screen sm:flex-row sm:items-center sm:pt-0">
+        <motion.video
+          src="/video/hero.mp4"
+          poster={heroStore}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
           initial={{ scale: 1.14 }}
           animate={{ scale: 1 }}
           transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="aspect-video w-full object-cover sm:absolute sm:inset-0 sm:aspect-auto sm:h-full sm:opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-ink via-ink/55 to-ink/25 sm:block" />
 
-        <div className="relative mx-auto w-full max-w-[1400px] px-6 pt-32 pb-24 lg:px-12">
+        <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-6 py-10 sm:flex-none sm:py-0 sm:pt-32 sm:pb-24 lg:px-12">
           <motion.span
             className="eyebrow"
             initial={{ opacity: 0, y: 18 }}
@@ -271,7 +274,7 @@ function Home() {
             alt="The Peter England brand wall inside the showroom"
             className="aspect-[4/5]"
             width={900}
-            height={600}
+            height={750}
           />
         </div>
       </section>
@@ -375,7 +378,7 @@ function Home() {
                 w: 600,
               },
               { src: galleryCustomers, alt: "A customer at the fitting mirror", h: 600, w: 900 },
-              { src: galleryTrialRoom, alt: "The trial room entrance", h: 600, w: 900 },
+              { src: galleryTrialRoom, alt: "The trial room entrance", h: 750, w: 900 },
             ].map((img, i) => (
               <Reveal key={img.alt} delay={(i % 3) * 0.08} className="break-inside-avoid">
                 <div className="media-zoom">

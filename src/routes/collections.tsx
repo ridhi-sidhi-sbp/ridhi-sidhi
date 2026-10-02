@@ -6,19 +6,19 @@ import { Reveal, RevealImage } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
-import heroStore from "@/assets/photos/full/store/store-02.webp";
+import heroStore from "@/assets/photos/full/store/store-01.webp";
 import imgShirts from "@/assets/photos/card/shirts/shirts-04.webp";
-import imgTshirts from "@/assets/photos/card/tshirts/tshirts-09.webp";
-import imgBlazers from "@/assets/photos/card/blazers/blazers-14.webp";
+import imgTshirts from "@/assets/photos/card/tshirts/tshirts-02.webp";
+import imgBlazers from "@/assets/photos/card/blazers/blazers-02.webp";
 import imgJeans from "@/assets/photos/card/jeans/jeans-06.webp";
-import imgFormalPants from "@/assets/photos/card/formal-pants/formal-pants-18.webp";
+import imgFormalPants from "@/assets/photos/card/formal-pants/formal-pants-02.webp";
 import imgCargoPants from "@/assets/photos/card/cargo-pants/cargo-pants-03.webp";
-import imgHalfPants from "@/assets/photos/card/half-pants/half-pants-03.webp";
-import imgTrackPants from "@/assets/photos/card/track-pants/track-pants-03.webp";
-import imgInnerWear from "@/assets/photos/card/inner-wear/inner-wear-04.webp";
-import imgWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-05.webp";
+import imgHalfPants from "@/assets/photos/card/half-pants/half-pants-02.webp";
+import imgTrackPants from "@/assets/photos/card/track-pants/track-pants-04.webp";
+import imgInnerWear from "@/assets/photos/card/inner-wear/inner-wear-01.webp";
+import imgWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-02.webp";
 import imgAccessories from "@/assets/photos/card/accessories/accessories-08.webp";
-import showcaseBlazerRoom from "@/assets/photos/card/store/store-04.webp";
+import showcaseBlazerRoom from "@/assets/photos/card/store/store-02.webp";
 import showcaseDenim from "@/assets/photos/card/jeans/jeans-01.webp";
 
 export const Route = createFileRoute("/collections")({
@@ -47,28 +47,28 @@ const catalogue = [
     copy: "Egyptian cotton, linen blends and easy-iron twills in classic and slim fits.",
     image: imgShirts,
     w: 900,
-    h: 600,
+    h: 822,
   },
   {
     name: "T-Shirts",
     copy: "Combed cotton crews, polos and long-sleeve knits in seasonal tones.",
     image: imgTshirts,
     w: 900,
-    h: 600,
+    h: 822,
   },
   {
     name: "Blazers",
     copy: "Half-canvas tailoring in wool, wool-blend and unstructured summer weights.",
     image: imgBlazers,
-    w: 646,
+    w: 745,
     h: 900,
   },
   {
     name: "Jeans",
     copy: "Straight, slim and relaxed denim from raw indigo to stone-washed light.",
     image: imgJeans,
-    w: 600,
-    h: 900,
+    w: 900,
+    h: 822,
   },
   {
     name: "Formal Pants",
@@ -110,7 +110,7 @@ const catalogue = [
     copy: "Full-grain leather in tan, oxblood and black with brushed hardware.",
     image: imgWalletsBelts,
     w: 900,
-    h: 704,
+    h: 600,
   },
   {
     name: "Accessories",
@@ -160,27 +160,38 @@ function Collections() {
           />
 
           <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {catalogue.map((item, i) => (
-              <Reveal key={item.name} delay={(i % 3) * 0.07}>
-                <article className="group relative aspect-[4/5] overflow-hidden bg-background media-zoom">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    width={item.w}
-                    height={item.h}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-8">
-                    <h3 className="text-2xl text-bone">{item.name}</h3>
-                    <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-bone/70 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100">
-                      {item.copy}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+            {catalogue.map((item, i) => {
+              const isLast = i === catalogue.length - 1;
+              return (
+                <Reveal
+                  key={item.name}
+                  delay={(i % 3) * 0.07}
+                  className={isLast ? "sm:col-span-2" : ""}
+                >
+                  <article
+                    className={`group relative overflow-hidden bg-background media-zoom ${
+                      isLast ? "aspect-[16/9] sm:aspect-[21/9] lg:aspect-[18/7]" : "aspect-[4/5]"
+                    }`}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      width={item.w}
+                      height={item.h}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-8">
+                      <h3 className="text-2xl text-bone">{item.name}</h3>
+                      <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-bone/70 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100">
+                        {item.copy}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

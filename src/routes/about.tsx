@@ -6,10 +6,10 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 import { site } from "@/lib/site";
 
-import heroStore from "@/assets/photos/full/store/store-08.webp";
-import journeyStorefront from "@/assets/photos/card/storefront/storefront-06.webp";
+import heroStore from "@/assets/photos/full/store/store-02.webp";
+import journeyStorefront from "@/assets/photos/card/storefront/storefront-02.webp";
 import floorCustomers from "@/assets/photos/card/customers/customers-01.webp";
-import highlightsStore from "@/assets/photos/card/store/store-05.webp";
+import highlightsStore from "@/assets/photos/card/store/store-01.webp";
 import ownerPortrait from "@/assets/photos/card/owner/owner-04.webp";
 
 export const Route = createFileRoute("/about")({
@@ -55,7 +55,7 @@ function About() {
         image={heroStore}
         alt="Illuminated shelving inside the Ridhi Sidhi showroom"
         width={1600}
-        height={1067}
+        height={1333}
       />
 
       {/* Our approach */}

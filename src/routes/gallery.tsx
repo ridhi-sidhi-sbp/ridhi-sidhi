@@ -8,7 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 
-import heroStorefront from "@/assets/photos/full/storefront/storefront-01.webp";
+import heroStorefront from "@/assets/photos/full/storefront/storefront-05.webp";
 import dimensions from "@/assets/photos/dimensions.json";
 
 export const Route = createFileRoute("/gallery")({
