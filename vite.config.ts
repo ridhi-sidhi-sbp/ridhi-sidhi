@@ -12,9 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  // Deploy target is Vercel (Build Output API -> .vercel/output). Pinned here so a
-  // failed platform auto-detect can't silently fall back to the Lovable Cloudflare default.
-  nitro: { preset: "vercel" },
+  // Deploy target is Antideploy, which serves a plain static `dist/` folder
+  // (no paid Vercel tier available). The site has no real backend (contact
+  // form is client-only, see CLAUDE.md), so every route is prerendered to
+  // static HTML at build time and no server bundle is produced.
+  nitro: { preset: "node", output: { publicDir: "dist" } },
   // Dev only: let the ngrok tunnel hostnames through Vite's host check (403 otherwise).
   vite: {
     server: { allowedHosts: [".ngrok-free.app", ".ngrok.app", ".ngrok.io"] },
