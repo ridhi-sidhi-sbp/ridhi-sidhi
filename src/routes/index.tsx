@@ -13,7 +13,7 @@ import { productCategories } from "@/lib/catalogue";
 import { site } from "@/lib/site";
 
 import heroStore from "@/assets/photos/full/store/store-01.webp";
-import ownerPortrait from "@/assets/photos/thumb/owner/owner-01.webp";
+import ownerPortrait from "@/assets/photos/full/owner/owner-01.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -336,8 +336,8 @@ function Home() {
             src={ownerPortrait}
             alt="The owner at the billing counter"
             className="aspect-[4/5]"
-            width={500}
-            height={333}
+            width={1536}
+            height={1024}
           />
         </div>
       </section>
