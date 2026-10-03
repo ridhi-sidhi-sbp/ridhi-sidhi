@@ -13,7 +13,7 @@ import { productCategories } from "@/lib/catalogue";
 import { site } from "@/lib/site";
 
 import heroStore from "@/assets/photos/full/store/store-01.webp";
-import brandsWall from "@/assets/photos/card/store/store-02.webp";
+import ownerPortrait from "@/assets/photos/thumb/owner/owner-01.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -333,11 +333,11 @@ function Home() {
             </Reveal>
           </div>
           <RevealImage
-            src={brandsWall}
-            alt="The Peter England brand wall inside the showroom"
+            src={ownerPortrait}
+            alt="The owner at the billing counter"
             className="aspect-[4/5]"
-            width={900}
-            height={750}
+            width={500}
+            height={333}
           />
         </div>
       </section>
