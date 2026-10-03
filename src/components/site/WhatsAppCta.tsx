@@ -1,5 +1,6 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { WhatsAppButton } from "./WhatsAppButton";
 import { site } from "@/lib/site";
 
 export function WhatsAppCta() {
@@ -16,15 +17,7 @@ export function WhatsAppCta() {
             floor team will pull a rail together for your arrival.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={site.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="flex w-full items-center justify-center gap-3 bg-accent px-9 py-4 text-[0.6875rem] tracking-[0.24em] text-accent-foreground uppercase transition-colors hover:bg-gold-soft sm:w-auto"
-            >
-              <MessageCircle className="size-4" />
-              Chat on WhatsApp
-            </a>
+            <WhatsAppButton className="w-full sm:w-auto">Chat on WhatsApp</WhatsAppButton>
             <a
               href={site.phoneHref}
               className="flex w-full items-center justify-center gap-3 border border-bone/40 px-9 py-4 text-[0.6875rem] tracking-[0.24em] text-bone uppercase transition-colors hover:bg-bone hover:text-ink sm:w-auto"

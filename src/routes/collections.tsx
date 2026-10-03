@@ -1,226 +1,191 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
-import { PageShell, PageHero } from "@/components/site/PageShell";
-import { Reveal, RevealImage } from "@/components/site/Reveal";
-import { SectionHeading } from "@/components/site/SectionHeading";
+import { PageShell } from "@/components/site/PageShell";
+import { Lightbox } from "@/components/site/Lightbox";
+import { Reveal } from "@/components/site/Reveal";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { getProductCategory, productCategories } from "@/lib/catalogue";
+import { shotsFor, shotsForAll, type Shot } from "@/lib/photos";
 
-import heroStore from "@/assets/photos/full/store/store-01.webp";
-import imgShirts from "@/assets/photos/card/shirts/shirts-04.webp";
-import imgTshirts from "@/assets/photos/card/tshirts/tshirts-02.webp";
-import imgBlazers from "@/assets/photos/card/blazers/blazers-02.webp";
-import imgJeans from "@/assets/photos/card/jeans/jeans-06.webp";
-import imgFormalPants from "@/assets/photos/card/formal-pants/formal-pants-02.webp";
-import imgCargoPants from "@/assets/photos/card/cargo-pants/cargo-pants-03.webp";
-import imgHalfPants from "@/assets/photos/card/half-pants/half-pants-02.webp";
-import imgTrackPants from "@/assets/photos/card/track-pants/track-pants-04.webp";
-import imgInnerWear from "@/assets/photos/card/inner-wear/inner-wear-01.webp";
-import imgWalletsBelts from "@/assets/photos/card/wallets-belts/wallets-belts-02.webp";
-import imgAccessories from "@/assets/photos/card/accessories/accessories-08.webp";
-import showcaseBlazerRoom from "@/assets/photos/card/store/store-02.webp";
-import showcaseDenim from "@/assets/photos/card/jeans/jeans-01.webp";
+import headerStore from "@/assets/photos/full/store/store-01.webp";
 
 export const Route = createFileRoute("/collections")({
+  validateSearch: (search: Record<string, unknown>): { category?: string } =>
+    typeof search["category"] === "string" ? { category: search["category"] } : {},
   head: () => ({
     meta: [
       { title: "Collections — Ridhi Sidhi Premium Garment Showroom" },
       {
         name: "description",
         content:
-          "Shirts, blazers, denim, formal and cargo trousers, inner wear, wallets, belts and accessories — all on the Ridhi Sidhi showroom floor.",
+          "Shirts, T-shirts, blazers, jeans, formal, cargo, half and track pants, inner wear, wallets, belts and accessories. Browse every category on the Ridhi Sidhi showroom floor.",
       },
       { property: "og:title", content: "Collections — Ridhi Sidhi" },
       {
         property: "og:description",
         content:
-          "Curated categories across menswear, casual and formal wear, displayed across our showroom floor.",
+          "Eleven menswear categories, curated by hand. Pick a category to see it on its own.",
       },
     ],
   }),
   component: Collections,
 });
 
-const catalogue = [
-  {
-    name: "Shirts",
-    copy: "Egyptian cotton, linen blends and easy-iron twills in classic and slim fits.",
-    image: imgShirts,
-    w: 900,
-    h: 822,
-  },
-  {
-    name: "T-Shirts",
-    copy: "Combed cotton crews, polos and long-sleeve knits in seasonal tones.",
-    image: imgTshirts,
-    w: 900,
-    h: 822,
-  },
-  {
-    name: "Blazers",
-    copy: "Half-canvas tailoring in wool, wool-blend and unstructured summer weights.",
-    image: imgBlazers,
-    w: 745,
-    h: 900,
-  },
-  {
-    name: "Jeans",
-    copy: "Straight, slim and relaxed denim from raw indigo to stone-washed light.",
-    image: imgJeans,
-    w: 900,
-    h: 822,
-  },
-  {
-    name: "Formal Pants",
-    copy: "Flat-front and single-pleat trousers with crease-hold finishing.",
-    image: imgFormalPants,
-    w: 600,
-    h: 900,
-  },
-  {
-    name: "Cargo Pants",
-    copy: "Utility pockets, tapered legs and washed cotton for everyday wear.",
-    image: imgCargoPants,
-    w: 900,
-    h: 600,
-  },
-  {
-    name: "Half Pants",
-    copy: "Chino shorts, printed shorts and drawstring styles for warm months.",
-    image: imgHalfPants,
-    w: 600,
-    h: 900,
-  },
-  {
-    name: "Track Pants",
-    copy: "French terry and performance knits with clean, unbranded lines.",
-    image: imgTrackPants,
-    w: 600,
-    h: 900,
-  },
-  {
-    name: "Inner Wear",
-    copy: "Breathable cotton vests, briefs, trunks and thermal layers.",
-    image: imgInnerWear,
-    w: 900,
-    h: 600,
-  },
-  {
-    name: "Wallets & Belts",
-    copy: "Full-grain leather in tan, oxblood and black with brushed hardware.",
-    image: imgWalletsBelts,
-    w: 900,
-    h: 600,
-  },
-  {
-    name: "Accessories",
-    copy: "Handkerchief sets, socks, ties and travel-ready leather goods.",
-    image: imgAccessories,
-    w: 600,
-    h: 900,
-  },
-];
+const allShots = shotsForAll(productCategories.map((c) => c.slug));
 
-const showcases = [
-  {
-    eyebrow: "Showcase 01",
-    title: "The Tailoring Room",
-    copy: "A dedicated corner for blazers, three-piece suits and formal shirting. Measurements are taken standing, seated and mid-stride — the way you will actually wear the garment.",
-    image: showcaseBlazerRoom,
-    reverse: false,
-  },
-  {
-    eyebrow: "Showcase 02",
-    title: "Everyday & Weekend",
-    copy: "Denim, knitwear, track and cargo — the rails students and young professionals visit most. Restocked weekly, sized generously, and always displayed by fit rather than by label.",
-    image: showcaseDenim,
-    reverse: false,
-  },
+const filters = [
+  { slug: undefined, name: "All" },
+  ...productCategories.map((c) => ({ slug: c.slug, name: c.name })),
 ];
 
 function Collections() {
+  const { category } = Route.useSearch();
+  const selected = getProductCategory(category);
+  const groups = selected ? [selected] : productCategories;
+  const visible: Shot[] = selected ? shotsFor(selected.slug) : allShots;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <PageShell>
-      <PageHero
-        eyebrow="Collections"
-        title="Eleven categories, curated by hand"
-        description="No carts, no checkout. Just an honest look at what is on the floor this season — come in and try what catches your eye."
-        image={heroStore}
-        alt="Interior rails of the Ridhi Sidhi showroom"
-        width={1600}
-        height={1067}
-      />
+      <section className="relative overflow-hidden bg-ink pt-32 pb-14 lg:pt-40 lg:pb-20">
+        <img
+          src={headerStore}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/30" />
+        <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-2 text-[0.625rem] tracking-[0.24em] text-bone/50 uppercase"
+          >
+            <Link to="/" className="transition-colors hover:text-bone">
+              Home
+            </Link>
+            <span aria-hidden="true">/</span>
+            {selected ? (
+              <>
+                <Link to="/collections" className="transition-colors hover:text-bone">
+                  Collections
+                </Link>
+                <span aria-hidden="true">/</span>
+                <span className="text-gold-soft">{selected.name}</span>
+              </>
+            ) : (
+              <span className="text-gold-soft">Collections</span>
+            )}
+          </nav>
 
-      <section className="bg-background">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-          <SectionHeading
-            eyebrow="The Catalogue"
-            title="What you'll find on the rails"
-            description="Each category is merchandised by fit and fabric so you can compare like with like, without a price tag getting in the way of the decision."
-          />
-
-          <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {catalogue.map((item, i) => {
-              const isLast = i === catalogue.length - 1;
-              return (
-                <Reveal
-                  key={item.name}
-                  delay={(i % 3) * 0.07}
-                  className={isLast ? "sm:col-span-2" : ""}
-                >
-                  <article
-                    className={`group relative overflow-hidden bg-background media-zoom ${
-                      isLast ? "aspect-[16/9] sm:aspect-[21/9] lg:aspect-[18/7]" : "aspect-[4/5]"
-                    }`}
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      width={item.w}
-                      height={item.h}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-8">
-                      <h3 className="text-2xl text-bone">{item.name}</h3>
-                      <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-bone/70 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100">
-                        {item.copy}
-                      </p>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
-          </div>
+          <h1 className="mt-6 text-5xl leading-[1.04] text-bone sm:text-6xl lg:text-7xl">
+            {selected ? selected.name : "All collections"}
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-bone/70">
+            {selected
+              ? selected.copy
+              : "Eleven categories, curated by hand. Pick one to see it on its own, or browse the whole floor below."}
+          </p>
+          <WhatsAppButton
+            variant="solid"
+            message={
+              selected
+                ? `Hello Ridhi Sidhi, I'd like to see your ${selected.name} range.`
+                : "Hello Ridhi Sidhi, I'd like to know more about your collections."
+            }
+            className="mt-8"
+          >
+            {selected ? `Ask about ${selected.name}` : "Ask our floor team"}
+          </WhatsAppButton>
+          <p className="mt-6 text-[0.6875rem] tracking-[0.24em] text-gold-soft uppercase">
+            {visible.length} photographs
+          </p>
         </div>
       </section>
 
-      {showcases.map((s, i) => (
-        <section key={s.title} className={i % 2 === 0 ? "bg-bone" : "bg-background"}>
-          <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:gap-24 lg:px-12 lg:py-32">
-            <RevealImage
-              src={s.image}
-              alt={s.title}
-              className={`aspect-[4/5] ${s.reverse ? "lg:order-2" : ""}`}
-              width={900}
-              height={600}
-            />
-            <div>
-              <SectionHeading eyebrow={s.eyebrow} title={s.title} description={s.copy} />
-              <Reveal delay={0.15}>
-                <Link
-                  to="/contact"
-                  className="group mt-10 inline-flex items-center gap-3 border border-ink px-8 py-4 text-[0.6875rem] tracking-[0.24em] uppercase transition-colors hover:bg-ink hover:text-bone"
-                >
-                  Plan a visit
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-      ))}
+      <div className="sticky top-20 z-30 border-b border-border bg-background/95 backdrop-blur-md">
+        <nav
+          aria-label="Filter by category"
+          className="mx-auto max-w-[1400px] overflow-x-auto px-6 py-4 lg:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <ul className="flex w-max gap-2 lg:w-auto lg:flex-wrap">
+            {filters.map((f) => {
+              const isActive = (selected?.slug ?? undefined) === f.slug;
+              return (
+                <li key={f.name}>
+                  <Link
+                    to="/collections"
+                    search={f.slug ? { category: f.slug } : {}}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`inline-flex items-center gap-2 border px-4 py-2.5 text-[0.625rem] tracking-[0.2em] whitespace-nowrap uppercase transition-colors ${
+                      isActive
+                        ? "border-ink bg-ink text-bone"
+                        : "border-border text-muted-foreground hover:border-ink hover:text-foreground"
+                    }`}
+                  >
+                    {f.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+
+      <section className="bg-background">
+        <div className="mx-auto max-w-[1400px] space-y-24 px-6 py-16 lg:px-12 lg:py-24">
+          {groups.map((cat) => {
+            const shots = shotsFor(cat.slug);
+            return (
+              <div key={cat.slug}>
+                {selected ? null : (
+                  <div className="mb-10 flex flex-wrap items-end justify-between gap-6 border-b border-border pb-6">
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl">{cat.name}</h2>
+                      <p className="mt-2 text-sm text-muted-foreground">{cat.note}</p>
+                    </div>
+                    <Link
+                      to="/collections"
+                      search={{ category: cat.slug }}
+                      className="link-underline text-[0.6875rem] tracking-[0.24em] uppercase"
+                    >
+                      View all {cat.name}
+                    </Link>
+                  </div>
+                )}
+
+                <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+                  {shots.map((shot, i) => (
+                    <Reveal key={shot.key} delay={(i % 6) * 0.05} className="break-inside-avoid">
+                      <button
+                        type="button"
+                        onClick={() => setLightboxIndex(visible.indexOf(shot))}
+                        className="group relative block w-full cursor-zoom-in overflow-hidden media-zoom"
+                      >
+                        <img
+                          src={shot.thumb}
+                          alt={shot.alt}
+                          width={shot.width}
+                          height={shot.height}
+                          loading="lazy"
+                          className="w-full object-cover"
+                        />
+                        <span className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/20" />
+                        <span className="absolute bottom-0 left-0 p-5 text-left text-[0.625rem] tracking-[0.24em] text-bone uppercase opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                          {shot.label}
+                        </span>
+                      </button>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <Lightbox shots={visible} index={lightboxIndex} onIndexChange={setLightboxIndex} />
 
       <WhatsAppCta />
     </PageShell>
