@@ -10,6 +10,7 @@
     "dev": "vite dev",
     "build": "vite build && node scripts/prerender-static.mjs",
     "build:dev": "vite build --mode development",
+    "deploy:vps": "bash scripts/deploy-vps.sh",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
