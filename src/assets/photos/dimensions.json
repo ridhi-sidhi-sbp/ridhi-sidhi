@@ -1,91 +1,7 @@
 {
-  "/src/assets/photos/thumb/accessories/accessories-02.webp": [
+  "/src/assets/photos/thumb/accessories/accessories-09.webp": [
     500,
-    333
-  ],
-  "/src/assets/photos/thumb/accessories/accessories-07.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/accessories/accessories-08.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/cargo-pants/cargo-pants-01.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/cargo-pants/cargo-pants-03.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/cargo-pants/cargo-pants-05.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-01.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-02.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-05.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-08.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-11.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-12.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-13.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-18.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-20.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/customers/customers-21.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/half-pants/half-pants-02.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/half-pants/half-pants-06.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/owner/owner-04.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/storefront/storefront-02.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/storefront/storefront-05.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/track-pants/track-pants-04.webp": [
-    333,
-    500
+    457
   ],
   "/src/assets/photos/thumb/blazers/blazers-01.webp": [
     500,
@@ -110,6 +26,114 @@
   "/src/assets/photos/thumb/blazers/blazers-09.webp": [
     333,
     500
+  ],
+  "/src/assets/photos/thumb/cargo-pants/cargo-pants-06.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/cargo-pants/cargo-pants-07.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/cargo-pants/cargo-pants-08.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/cargo-pants/cargo-pants-09.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/cargo-pants/cargo-pants-10.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/customers/customers-01.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/customers/customers-02.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/customers/customers-03.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/customers/customers-04.webp": [
+    500,
+    333
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-01.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-02.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-03.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-04.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-06.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-07.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/formal-pants/formal-pants-08.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/half-pants/half-pants-01.webp": [
+    417,
+    500
+  ],
+  "/src/assets/photos/thumb/inner-wear/inner-wear-01.webp": [
+    500,
+    333
+  ],
+  "/src/assets/photos/thumb/inner-wear/inner-wear-02.webp": [
+    500,
+    333
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-01.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-02.webp": [
+    333,
+    500
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-03.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-04.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-05.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-06.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/jeans/jeans-07.webp": [
+    500,
+    457
+  ],
+  "/src/assets/photos/thumb/owner/owner-01.webp": [
+    500,
+    333
   ],
   "/src/assets/photos/thumb/shirts/shirts-02.webp": [
     500,
@@ -143,61 +167,29 @@
     500,
     333
   ],
-  "/src/assets/photos/thumb/jeans/jeans-01.webp": [
-    333,
-    500
+  "/src/assets/photos/thumb/store/store-01.webp": [
+    500,
+    333
   ],
-  "/src/assets/photos/thumb/jeans/jeans-02.webp": [
-    333,
-    500
+  "/src/assets/photos/thumb/store/store-02.webp": [
+    500,
+    417
   ],
-  "/src/assets/photos/thumb/jeans/jeans-03.webp": [
+  "/src/assets/photos/thumb/storefront/storefront-01.webp": [
+    500,
+    333
+  ],
+  "/src/assets/photos/thumb/track-pants/track-pants-01.webp": [
     500,
     457
   ],
-  "/src/assets/photos/thumb/jeans/jeans-04.webp": [
+  "/src/assets/photos/thumb/track-pants/track-pants-02.webp": [
     500,
     457
   ],
-  "/src/assets/photos/thumb/jeans/jeans-05.webp": [
+  "/src/assets/photos/thumb/track-pants/track-pants-03.webp": [
     500,
     457
-  ],
-  "/src/assets/photos/thumb/jeans/jeans-06.webp": [
-    500,
-    457
-  ],
-  "/src/assets/photos/thumb/jeans/jeans-07.webp": [
-    500,
-    457
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-01.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-02.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-03.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-04.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-06.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-07.webp": [
-    333,
-    500
-  ],
-  "/src/assets/photos/thumb/formal-pants/formal-pants-08.webp": [
-    333,
-    500
   ],
   "/src/assets/photos/thumb/tshirts/tshirts-01.webp": [
     500,
@@ -230,21 +222,5 @@
   "/src/assets/photos/thumb/wallets-belts/wallets-belts-02.webp": [
     500,
     333
-  ],
-  "/src/assets/photos/thumb/inner-wear/inner-wear-01.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/inner-wear/inner-wear-02.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/store/store-01.webp": [
-    500,
-    333
-  ],
-  "/src/assets/photos/thumb/store/store-02.webp": [
-    500,
-    417
   ]
 }

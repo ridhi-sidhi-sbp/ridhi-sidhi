@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { WhatsAppFloat } from "./WhatsAppButton";
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         {children}
       </motion.main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }
@@ -28,6 +30,8 @@ export function PageHero({
   alt,
   width,
   height,
+  position = "object-center",
+  heightClass = "h-[60vh] min-h-[420px]",
 }: {
   eyebrow: string;
   title: string;
@@ -36,9 +40,13 @@ export function PageHero({
   alt: string;
   width?: number;
   height?: number;
+  /** Tailwind object-position class, for keeping people's heads inside the crop. */
+  position?: string;
+  /** Tailwind height classes for the hero frame; taller frames show more of the photo. */
+  heightClass?: string;
 }) {
   return (
-    <section className="relative flex h-[60vh] min-h-[420px] items-end overflow-hidden bg-ink">
+    <section className={`relative flex items-end overflow-hidden bg-ink ${heightClass}`}>
       <motion.img
         src={image}
         alt={alt}
@@ -48,7 +56,7 @@ export function PageHero({
         initial={{ scale: 1.12 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 h-full w-full object-cover opacity-55"
+        className={`absolute inset-0 h-full w-full object-cover opacity-55 ${position}`}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" />
       <div className="relative mx-auto w-full max-w-[1400px] px-6 pb-16 lg:px-12 lg:pb-24">

@@ -6,10 +6,11 @@ import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { PageShell, PageHero } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { StoreMap } from "@/components/site/StoreMap";
 import { site } from "@/lib/site";
 
-import storefrontImg from "@/assets/photos/full/storefront/storefront-02.webp";
+import storefrontImg from "@/assets/photos/full/storefront/storefront-01.webp";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -70,7 +71,7 @@ function Contact() {
             <SectionHeading
               eyebrow="Store Information"
               title="Where to find us"
-              description="We are on Ring Road, a two-minute walk from Central Plaza, with parking behind the building."
+              description="We are on VSS Road in Hans Nagar, Sambalpur, Odisha."
             />
 
             <div className="mt-12 space-y-10">
@@ -100,15 +101,9 @@ function Contact() {
                   <Phone className="size-4" />
                   Call the Store
                 </a>
-                <a
-                  href={site.whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-3 border border-ink px-8 py-4 text-[0.6875rem] tracking-[0.24em] uppercase transition-colors hover:bg-ink hover:text-bone"
-                >
-                  <MessageCircle className="size-4" />
+                <WhatsAppButton variant="outline" tone="light">
                   WhatsApp Us
-                </a>
+                </WhatsAppButton>
               </div>
             </Reveal>
           </div>

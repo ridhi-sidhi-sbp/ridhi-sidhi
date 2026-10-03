@@ -6,11 +6,11 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { WhatsAppCta } from "@/components/site/WhatsAppCta";
 import { site } from "@/lib/site";
 
-import heroStore from "@/assets/photos/full/store/store-02.webp";
-import journeyStorefront from "@/assets/photos/card/storefront/storefront-02.webp";
+import heroStore from "@/assets/photos/full/storefront/storefront-01.webp";
+import journeyStorefront from "@/assets/photos/card/storefront/storefront-01.webp";
 import floorCustomers from "@/assets/photos/card/customers/customers-01.webp";
 import highlightsStore from "@/assets/photos/card/store/store-01.webp";
-import ownerPortrait from "@/assets/photos/card/owner/owner-04.webp";
+import ownerPortrait from "@/assets/photos/card/owner/owner-01.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -54,6 +54,8 @@ function About() {
         description="Ridhi Sidhi has been a family business from the first day — and the floor still runs the way a family would run it."
         image={heroStore}
         alt="Illuminated shelving inside the Ridhi Sidhi showroom"
+        position="object-top"
+        heightClass="h-[80vh] min-h-[520px]"
         width={1600}
         height={1333}
       />
