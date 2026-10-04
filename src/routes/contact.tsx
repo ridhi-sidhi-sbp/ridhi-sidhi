@@ -71,7 +71,7 @@ function Contact() {
             <SectionHeading
               eyebrow="Store Information"
               title="Where to find us"
-              description="We are on VSS Road in Hans Nagar, Sambalpur, Odisha."
+              description={`We are at ${site.address.line1}, ${site.address.line2}.`}
             />
 
             <div className="mt-12 space-y-10">

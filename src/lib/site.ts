@@ -1,14 +1,14 @@
 export const site = {
   name: "Ridhi Sidhi",
   tagline: "Premium Garment Showroom",
-  phone: "+91 98250 41200",
-  phoneHref: "tel:+919825041200",
-  whatsapp: "919825041200",
+  phone: "+91 9439893349",
+  phoneHref: "tel:+919439893349",
+  whatsapp: "919439893349",
   whatsappHref:
-    "https://wa.me/919825041200?text=Hello%20Ridhi%20Sidhi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collections.",
-  email: "care@ridhisidhishowroom.in",
+    "https://wa.me/919439893349?text=Hello%20Ridhi%20Sidhi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20collections.",
+  email: "ridhisidhisbp@gmail.com",
   address: {
-    line1: "Ridhi Sidhi Showroom, VSS Road, Hans Nagar",
+    line1: "Ridhi Sidhi Showroom, VSS Marg, Hans Nagar",
     line2: "Sambalpur, Odisha 768001",
   },
   hours: "10:00 AM – 9:00 PM, all days",
