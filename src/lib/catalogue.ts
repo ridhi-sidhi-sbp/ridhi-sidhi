@@ -6,6 +6,7 @@
 import shirtsCover from "@/assets/photos/card/shirts/shirts-04.webp";
 import tshirtsCover from "@/assets/photos/card/tshirts/tshirts-02.webp";
 import blazersCover from "@/assets/photos/card/blazers/blazers-02.webp";
+import winterJacketsCover from "@/assets/photos/card/winter-jackets/winter-jackets-02.webp";
 import jeansCover from "@/assets/photos/card/jeans/jeans-06.webp";
 import formalPantsCover from "@/assets/photos/card/formal-pants/formal-pants-02.webp";
 import cargoPantsCover from "@/assets/photos/card/cargo-pants/cargo-pants-06.webp";
@@ -54,6 +55,15 @@ export const productCategories: ProductCategory[] = [
     copy: "Half-canvas tailoring in wool, wool-blend and unstructured summer weights.",
     cover: blazersCover,
     w: 745,
+    h: 900,
+  },
+  {
+    slug: "winter-jackets",
+    name: "Winter Jackets",
+    note: "Bombers, puffer vests & knitwear",
+    copy: "Casual bombers, puffer waistcoats and cable-knit sweaters for the cold months.",
+    cover: winterJacketsCover,
+    w: 506,
     h: 900,
   },
   {

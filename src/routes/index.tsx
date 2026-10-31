@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Eleven menswear categories under one roof. Browse the collections, then visit us in store.",
+          "Twelve menswear categories under one roof. Browse the collections, then visit us in store.",
       },
     ],
   }),
@@ -182,7 +182,7 @@ function CategoryIndex() {
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
             eyebrow="Shop by category"
-            title="Eleven categories on our floor"
+            title="Twelve categories on our floor"
             description="Pick a category to see every style we have on the rails. Each one opens on the collections page."
           />
           <Reveal delay={0.1}>

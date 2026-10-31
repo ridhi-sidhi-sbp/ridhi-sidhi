@@ -20,13 +20,13 @@ export const Route = createFileRoute("/collections")({
       {
         name: "description",
         content:
-          "Shirts, T-shirts, blazers, jeans, formal, cargo, half and track pants, inner wear, wallets, belts and accessories. Browse every category on the Ridhi Sidhi showroom floor.",
+          "Shirts, T-shirts, blazers, winter jackets, jeans, formal, cargo, half and track pants, inner wear, wallets, belts and accessories. Browse every category on the Ridhi Sidhi showroom floor.",
       },
       { property: "og:title", content: "Collections — Ridhi Sidhi" },
       {
         property: "og:description",
         content:
-          "Eleven menswear categories, curated by hand. Pick a category to see it on its own.",
+          "Twelve menswear categories, curated by hand. Pick a category to see it on its own.",
       },
     ],
   }),
@@ -85,7 +85,7 @@ function Collections() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-bone/70">
             {selected
               ? selected.copy
-              : "Eleven categories, curated by hand. Pick one to see it on its own, or browse the whole floor below."}
+              : "Twelve categories, curated by hand. Pick one to see it on its own, or browse the whole floor below."}
           </p>
           <WhatsAppButton
             variant="solid"

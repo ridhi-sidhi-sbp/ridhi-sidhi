@@ -168,7 +168,7 @@ function About() {
           />
           <div className="mt-16 grid gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["11", "Curated categories"],
+              ["12", "Curated categories"],
               ["4", "Brands stocked"],
               ["48h", "Alteration turnaround"],
             ].map(([value, label], i) => (
